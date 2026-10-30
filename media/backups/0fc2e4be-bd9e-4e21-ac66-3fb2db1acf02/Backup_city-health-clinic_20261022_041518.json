@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "backup_version": "1.0",
+    "practice_id": "0fc2e4be-bd9e-4e21-ac66-3fb2db1acf02",
+    "practice_name": "City Health Clinic",
+    "exported_at": "2026-10-22T04:15:18.740051+00:00",
+    "created_by": "owner@cityclinic.com",
+    "manifest": {
+      "practice": 1,
+      "locations_count": 0,
+      "services_count": 0,
+      "doctors_count": 0,
+      "website_pages_count": 0,
+      "blog_articles_count": 0,
+      "leads_count": 0,
+      "bookings_count": 0,
+      "consents_count": 0
+    }
+  },
+  "practice": {
+    "id": "0fc2e4be-bd9e-4e21-ac66-3fb2db1acf02",
+    "name": "City Health Clinic",
+    "slug": "city-health-clinic",
+    "clinic_type": "solo_clinic",
+    "phone_number": "",
+    "email": "",
+    "address": "",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "country": "India"
+  },
+  "locations": [],
+  "services": [],
+  "doctors": [],
+  "website": null,
+  "pages": [],
+  "blogs": [],
+  "leads": [],
+  "bookings": [],
+  "consent_records": []
+}

@@ -1,0 +1,475 @@
+{
+  "metadata": {
+    "backup_version": "1.0",
+    "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+    "practice_name": "Arogya Skin Clinic 106038",
+    "exported_at": "2026-10-29T04:53:20.922081+00:00",
+    "created_by": null,
+    "manifest": {
+      "practice": 1,
+      "locations_count": 0,
+      "services_count": 2,
+      "doctors_count": 1,
+      "website_pages_count": 5,
+      "blog_articles_count": 0,
+      "leads_count": 2,
+      "bookings_count": 1,
+      "consents_count": 1
+    }
+  },
+  "practice": {
+    "id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+    "name": "Arogya Skin Clinic 106038",
+    "slug": "arogya-skin-clinic-106038-386b2a6b",
+    "clinic_type": "solo_clinic",
+    "phone_number": "+919856925418",
+    "email": "dr.aditi_106038@arogyaclinic.com",
+    "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "country": "India"
+  },
+  "locations": [],
+  "services": [
+    {
+      "id": "11e66b7f-2e75-4ae3-be30-6f510e901d11",
+      "name": "Acne & Scar Laser Treatment",
+      "category": "procedure",
+      "description": "Fractional CO2 laser therapy.",
+      "price": "3500.00",
+      "duration_minutes": 45,
+      "is_active": true
+    },
+    {
+      "id": "acaee104-b9c2-4340-b35d-6da7016b772e",
+      "name": "General Dermatology Consultation",
+      "category": "consultation",
+      "description": "Comprehensive evaluation of skin conditions.",
+      "price": "800.00",
+      "duration_minutes": 20,
+      "is_active": true
+    }
+  ],
+  "doctors": [
+    {
+      "id": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+      "full_name": "Aditi Sharma",
+      "qualification": "MBBS, MD (Dermatology)",
+      "specialization": "Dermatology & Cosmetology",
+      "experience_years": 11,
+      "consultation_fee": "800.00",
+      "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+      "is_verified": false
+    }
+  ],
+  "website": {
+    "id": "28360824-4294-4870-8029-6388ccf07c0e",
+    "title": "Arogya Skin Clinic 106038",
+    "subdomain": "arogya106038",
+    "template_style": "modern_minimal",
+    "primary_color": "#0D9488",
+    "contact_phone": "+919856925418",
+    "contact_email": "dr.aditi_106038@arogyaclinic.com",
+    "is_published": true
+  },
+  "pages": [
+    {
+      "id": "d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec",
+      "title": "Laser Hair Removal Treatments",
+      "slug": "laser-hair-removal-106038",
+      "page_type": "services",
+      "is_homepage": false,
+      "is_published": true,
+      "published_content": {
+        "sections": [
+          {
+            "heading": "Advanced Laser Hair Reduction"
+          }
+        ],
+        "approval": {
+          "status": "approved",
+          "submitted_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "+919856925418",
+            "email": null
+          },
+          "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+          "submission_notes": "Added clinical laser description",
+          "reviewed_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "Dr. Aditi Sharma",
+            "email": null
+          },
+          "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+          "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+          "history": [
+            {
+              "action": "submitted_for_review",
+              "user": "+919856925418",
+              "timestamp": "2026-10-29T04:53:18.819995+00:00",
+              "notes": "Added clinical laser description"
+            },
+            {
+              "action": "approved",
+              "doctor": "Dr. Aditi Sharma",
+              "timestamp": "2026-10-29T04:53:18.864109+00:00",
+              "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c16d78bb-0414-4e08-9288-a99d3201ac73",
+      "title": "Home",
+      "slug": "home",
+      "page_type": "home",
+      "is_homepage": true,
+      "is_published": true,
+      "published_content": {
+        "sections": [
+          {
+            "id": "hero-section",
+            "type": "hero",
+            "headline": "Compassionate, World-Class Healthcare at Arogya Skin Clinic 106038",
+            "subheadline": "Advanced Dermatological Care & Aesthetic Wellness",
+            "badge": "Accepting New Patients Today",
+            "cta_primary": {
+              "text": "Book Appointment",
+              "link": "#appointment"
+            },
+            "cta_secondary": {
+              "text": "Explore Services",
+              "link": "/services"
+            },
+            "hero_image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+            "trust_stats": [
+              {
+                "label": "Patient Satisfaction",
+                "value": "98%"
+              },
+              {
+                "label": "Clinical Experience",
+                "value": "15+ Yrs"
+              },
+              {
+                "label": "Verified Specialists",
+                "value": "100%"
+              }
+            ]
+          },
+          {
+            "id": "about-section",
+            "type": "about",
+            "title": "Why Choose Arogya Skin Clinic 106038?",
+            "subtitle": "Patient-centric care powered by modern diagnostic standards",
+            "content": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+            "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West, Opposite National College, Mumbai, Maharashtra 400050",
+            "features": [
+              "Zero Waiting Times with Pre-booked Appointments",
+              "Digitized Prescriptions & Health Records",
+              "Hygienic, State-of-the-art Clinical Facilities",
+              "Transparent Pricing & Direct Specialist Care"
+            ]
+          },
+          {
+            "id": "services-section",
+            "type": "services_list",
+            "title": "Specialized Treatments & Clinical Services",
+            "subtitle": "Discover our comprehensive range of general and specialized medical services",
+            "services": [
+              {
+                "id": "11e66b7f-2e75-4ae3-be30-6f510e901d11",
+                "name": "Acne & Scar Laser Treatment",
+                "category": "Clinical Procedure",
+                "description": "Fractional CO2 laser therapy.",
+                "duration": "45 Mins",
+                "price": "INR 3500.00"
+              },
+              {
+                "id": "acaee104-b9c2-4340-b35d-6da7016b772e",
+                "name": "General Dermatology Consultation",
+                "category": "Consultation",
+                "description": "Comprehensive evaluation of skin conditions.",
+                "duration": "20 Mins",
+                "price": "INR 800.00"
+              }
+            ],
+            "view_all_link": "/services"
+          },
+          {
+            "id": "doctors-section",
+            "type": "doctor_roster",
+            "title": "Meet Our Medical Practitioners",
+            "subtitle": "Dedicated specialists focused on delivering exceptional patient outcomes",
+            "doctors": [
+              {
+                "id": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+                "name": "Dr. Aditi Sharma",
+                "specialization": "Dermatology & Cosmetology",
+                "qualifications": "MBBS, MD (Dermatology)",
+                "experience_years": "11+ Years Experience",
+                "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+                "photo_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+                "consultation_fee": "INR 800.00"
+              }
+            ]
+          },
+          {
+            "id": "timings-section",
+            "type": "schedule_timings",
+            "title": "Clinic Hours & Consultation Timetable",
+            "subtitle": "Plan your visit conveniently during our active clinic shifts",
+            "emergency_note": "For medical emergencies, please call +919856925418.",
+            "timings": [
+              {
+                "day": "Monday",
+                "session": "Morning OPD",
+                "time": "10:00 AM - 01:30 PM"
+              },
+              {
+                "day": "Monday",
+                "session": "Evening Clinic",
+                "time": "05:00 PM - 08:30 PM"
+              },
+              {
+                "day": "Saturday",
+                "session": "Weekend Special OPD",
+                "time": "10:00 AM - 03:00 PM"
+              }
+            ]
+          },
+          {
+            "id": "testimonials-section",
+            "type": "testimonials",
+            "title": "Real Experiences from Our Patients",
+            "subtitle": "Trusted by hundreds of families in our local community",
+            "testimonials": [
+              {
+                "patient_name": "Rohan Mehra",
+                "comment": "The consultation at Arogya Skin Clinic 106038 was incredibly thorough. The doctor listened attentively and explained everything clearly.",
+                "rating": 5,
+                "treatment": "General Consultation"
+              },
+              {
+                "patient_name": "Sunita Rao",
+                "comment": "Extremely clean clinic and very professional staff. Zero waiting time and excellent post-consultation guidance.",
+                "rating": 5,
+                "treatment": "Specialist Visit"
+              }
+            ]
+          },
+          {
+            "id": "gallery-section",
+            "type": "gallery",
+            "title": "Clinic Facilities & Environment",
+            "subtitle": "A calm, modern, and sterile healing atmosphere",
+            "images": [
+              {
+                "image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+                "caption": "Executive Patient Waiting Lounge & Reception",
+                "type": "reception"
+              }
+            ]
+          },
+          {
+            "id": "contact-section",
+            "type": "contact_map",
+            "title": "Get in Touch & Book an Appointment",
+            "subtitle": "Located conveniently in Mumbai. Reach out to schedule your visit.",
+            "phone": "+919856925418",
+            "email": "dr.aditi_106038@arogyaclinic.com",
+            "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postal_code": "400050",
+            "landmark": "Opposite National College"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4a0c0ad7-ade9-46dd-a2cf-5f79e619c557",
+      "title": "About Us",
+      "slug": "about",
+      "page_type": "about",
+      "is_homepage": false,
+      "is_published": true,
+      "published_content": {
+        "sections": [
+          {
+            "id": "about-hero",
+            "type": "page_header",
+            "title": "About Arogya Skin Clinic 106038",
+            "subtitle": "Our commitment to high quality, empathetic, and evidence-based patient care."
+          },
+          {
+            "id": "about-story",
+            "type": "narrative",
+            "title": "Our Clinical Heritage & Philosophy",
+            "body": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai."
+          },
+          {
+            "id": "about-doctors",
+            "type": "doctor_detailed_list",
+            "title": "Our Practitioners & Qualifications",
+            "doctors": [
+              {
+                "name": "Dr. Aditi Sharma",
+                "specialization": "Dermatology & Cosmetology",
+                "qualifications": "MBBS, MD (Dermatology)",
+                "registration_number": "MCI-2015-106038",
+                "registration_council": "Maharashtra Medical Council",
+                "experience_years": 11,
+                "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+                "photo_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "20be072c-6dce-4452-9b55-8d9470cd3cff",
+      "title": "Services",
+      "slug": "services",
+      "page_type": "services",
+      "is_homepage": false,
+      "is_published": true,
+      "published_content": {
+        "sections": [
+          {
+            "id": "services-hero",
+            "type": "page_header",
+            "title": "Treatments & Clinical Services",
+            "subtitle": "Specialized medical services offered at Arogya Skin Clinic 106038."
+          },
+          {
+            "id": "services-catalog",
+            "type": "services_catalog",
+            "currency": "INR",
+            "services": [
+              {
+                "id": "11e66b7f-2e75-4ae3-be30-6f510e901d11",
+                "name": "Acne & Scar Laser Treatment",
+                "category": "Clinical Procedure",
+                "description": "Fractional CO2 laser therapy.",
+                "duration_minutes": 45,
+                "price": "INR 3500.00",
+                "is_teleconsultation": false
+              },
+              {
+                "id": "acaee104-b9c2-4340-b35d-6da7016b772e",
+                "name": "General Dermatology Consultation",
+                "category": "Consultation",
+                "description": "Comprehensive evaluation of skin conditions.",
+                "duration_minutes": 20,
+                "price": "INR 800.00",
+                "is_teleconsultation": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "278e5bba-bcd8-4d2b-97ac-2f8a7788039f",
+      "title": "Contact Us",
+      "slug": "contact",
+      "page_type": "contact",
+      "is_homepage": false,
+      "is_published": true,
+      "published_content": {
+        "sections": [
+          {
+            "id": "contact-hero",
+            "type": "page_header",
+            "title": "Contact & Location",
+            "subtitle": "Reach out to us, book an appointment, or visit our clinic."
+          },
+          {
+            "id": "contact-details",
+            "type": "contact_info",
+            "phone": "+919856925418",
+            "email": "dr.aditi_106038@arogyaclinic.com",
+            "website": "https://arogyaclinic.com",
+            "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postal_code": "400050",
+            "country": "India",
+            "landmark": "Opposite National College",
+            "timings": [
+              {
+                "day": "Monday",
+                "session": "Morning OPD",
+                "time": "10:00 AM - 01:30 PM"
+              },
+              {
+                "day": "Monday",
+                "session": "Evening Clinic",
+                "time": "05:00 PM - 08:30 PM"
+              },
+              {
+                "day": "Saturday",
+                "session": "Weekend Special OPD",
+                "time": "10:00 AM - 03:00 PM"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "blogs": [],
+  "leads": [
+    {
+      "id": "29046ed3-fd62-4699-b562-e03992f7fef7",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "service_requested": "",
+      "doctor_requested": "",
+      "status": "appointment_scheduled",
+      "priority": "high",
+      "source": "website_form",
+      "created_at": "2026-10-29T04:53:19.382633+00:00"
+    },
+    {
+      "id": "3ba46f26-fddd-4105-b22f-6a4ff9dd13eb",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "service_requested": "Acne & Scar Laser Treatment",
+      "doctor_requested": "",
+      "status": "converted",
+      "priority": "medium",
+      "source": "website_form",
+      "created_at": "2026-10-29T04:53:19.120528+00:00"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "869d96eb-e5fd-4e9a-bdee-cc324effcb22",
+      "booking_reference": "CR-202610-1CMT",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "consultation_mode": "in_person",
+      "preferred_date": "2026-10-29",
+      "status": "in_consultation",
+      "created_at": "2026-10-29T04:53:19.362076+00:00"
+    }
+  ],
+  "consent_records": [
+    {
+      "id": "08974bde-36eb-4ae2-a9df-4c1e4b61bd27",
+      "patient_identifier": "+919886445915",
+      "patient_name": "Pooja Verma",
+      "consent_type": "whatsapp_notifications",
+      "status": "withdrawn",
+      "audit_hash": "77ca8aa1ffc3ffe6a1de3cd95a9ece75d8abadcbf2cec9cd423463e0f63b4290",
+      "granted_at": "2026-10-29T04:53:20.836249+00:00"
+    }
+  ]
+}

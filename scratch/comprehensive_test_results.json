@@ -1,0 +1,3935 @@
+[
+  {
+    "phase": 1,
+    "step": "1.1 Mobile OTP - Request Code",
+    "method": "POST",
+    "url": "/api/auth/otp/send/",
+    "request_body": {
+      "phone_number": "+919856925418",
+      "purpose": "login"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "OTP sent to +919856925418 successfully.",
+      "purpose": "login",
+      "expires_in_minutes": 5,
+      "dev_otp": "852946"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.2 Mobile OTP - Verify & Issue JWT Session",
+    "method": "POST",
+    "url": "/api/auth/otp/verify/",
+    "request_body": {
+      "phone_number": "+919856925418",
+      "otp_code": "852946",
+      "purpose": "login"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "message": "Authentication successful.",
+      "is_new_user": true,
+      "tokens": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5Mzg1NDM5NywiaWF0IjoxNzkzMjQ5NTk3LCJqdGkiOiI0ZTIwZGYyOWJjYmM0YmJhYmQ2ZmVjMzM5OWQ2OGJkNiIsInVzZXJfaWQiOiJiNGQzZjkxYS01NGUyLTQ3MzYtOTJkMy1mYTVlYWFlZDRlMzYiLCJlbWFpbCI6bnVsbCwicGhvbmVfbnVtYmVyIjoiKzkxOTg1NjkyNTQxOCIsImZ1bGxfbmFtZSI6Iis5MTk4NTY5MjU0MTgiLCJpc19zdGFmZiI6ZmFsc2V9.xy0XMXTiCES9A3rtqZkWebThLOy5xBP8MbqlF2uDNO0",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzMjUzMTk3LCJpYXQiOjE3OTMyNDk1OTcsImp0aSI6ImVjZjZiMjIwODMxMDRjNTBhMDNjYzdmMDYzOTYxMjM2IiwidXNlcl9pZCI6ImI0ZDNmOTFhLTU0ZTItNDczNi05MmQzLWZhNWVhYWVkNGUzNiIsImVtYWlsIjpudWxsLCJwaG9uZV9udW1iZXIiOiIrOTE5ODU2OTI1NDE4IiwiZnVsbF9uYW1lIjoiKzkxOTg1NjkyNTQxOCIsImlzX3N0YWZmIjpmYWxzZX0.jxRUJQQHg5eLUOtUrVGTTrgTQlvDq4NEC-xY4PGfvbs"
+      },
+      "user": {
+        "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+        "email": null,
+        "phone_number": "+919856925418",
+        "first_name": "",
+        "last_name": "",
+        "full_name": "+919856925418",
+        "avatar_url": null,
+        "is_email_verified": false,
+        "is_phone_verified": true,
+        "auth_provider": "phone",
+        "date_joined": "2026-10-29T04:53:17.231768Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.3 Alternative Auth: Google Sign-In",
+    "method": "POST",
+    "url": "/api/auth/google/",
+    "request_body": {
+      "id_token": "mock-google:dr.aditi_106038@arogyaclinic.com"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "message": "Google authentication successful.",
+      "is_new_user": true,
+      "tokens": {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5Mzg1NDM5NywiaWF0IjoxNzkzMjQ5NTk3LCJqdGkiOiIxZGFhMjU3Y2QyMGM0ZGNmODczNTFjNmUwZmViZGM2MiIsInVzZXJfaWQiOiI5ZTFjNzg4Ni1lMzE1LTQ1MTItYWZhNi0yZTExNGNmZTFlN2MiLCJlbWFpbCI6ImRyLmFkaXRpXzEwNjAzOEBhcm9neWFjbGluaWMuY29tIiwicGhvbmVfbnVtYmVyIjpudWxsLCJmdWxsX25hbWUiOiJHb29nbGUgVGVzdGVyIiwiaXNfc3RhZmYiOmZhbHNlfQ.aSA0pH0J2XZgt8Fjod0wMiP_mB0y9hhKNLWHCvAlW8E",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzMjUzMTk3LCJpYXQiOjE3OTMyNDk1OTcsImp0aSI6ImQ1YWJkZDI2MzE4NDRmYzM5OTY0OGU4YzY0ZDk1NjNlIiwidXNlcl9pZCI6IjllMWM3ODg2LWUzMTUtNDUxMi1hZmE2LTJlMTE0Y2ZlMWU3YyIsImVtYWlsIjoiZHIuYWRpdGlfMTA2MDM4QGFyb2d5YWNsaW5pYy5jb20iLCJwaG9uZV9udW1iZXIiOm51bGwsImZ1bGxfbmFtZSI6Ikdvb2dsZSBUZXN0ZXIiLCJpc19zdGFmZiI6ZmFsc2V9.58OFNPirDKWvXH4hEsGSUq158reTYWnMU6ACw-tE1og"
+      },
+      "user": {
+        "id": "9e1c7886-e315-4512-afa6-2e114cfe1e7c",
+        "email": "dr.aditi_106038@arogyaclinic.com",
+        "phone_number": null,
+        "first_name": "Google",
+        "last_name": "Tester",
+        "full_name": "Google Tester",
+        "avatar_url": "https://lh3.googleusercontent.com/a/default-user=s96-c",
+        "is_email_verified": true,
+        "is_phone_verified": false,
+        "auth_provider": "google",
+        "date_joined": "2026-10-29T04:53:17.303706Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.4 Wizard - Track Progress Initial",
+    "method": "GET",
+    "url": "/api/practices/onboarding/progress/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "onboarding": {
+        "id": "d7a54548-253c-4a11-b970-cfa48898daa2",
+        "user": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+        "practice": null,
+        "current_step": "doctor_profile",
+        "current_step_display": "Doctor Profile & Registration Number",
+        "completed_steps": [],
+        "draft_data": {},
+        "is_completed": false,
+        "completed_at": null,
+        "progress_percentage": 0,
+        "created_at": "2026-10-29T04:53:17.332339Z",
+        "updated_at": "2026-10-29T04:53:17.332371Z"
+      },
+      "progress_percentage": 0,
+      "current_step": "doctor_profile",
+      "completed_steps": [],
+      "is_completed": false,
+      "steps": [
+        {
+          "key": "doctor_profile",
+          "step_number": 1,
+          "title": "Doctor Profile & Registration Number",
+          "description": "Doctor credentials, medical registration number, council, and specialization.",
+          "is_completed": false,
+          "data": {}
+        },
+        {
+          "key": "clinic_details",
+          "step_number": 2,
+          "title": "Clinic & Practice Details",
+          "description": "Clinic name, address, contact information, location, and currency.",
+          "is_completed": false,
+          "data": {}
+        },
+        {
+          "key": "services",
+          "step_number": 3,
+          "title": "Clinical Services & Consultation Fees",
+          "description": "Healthcare services offered with duration and consultation fees.",
+          "is_completed": false,
+          "data": []
+        },
+        {
+          "key": "timings",
+          "step_number": 4,
+          "title": "Clinic Timings & Working Hours",
+          "description": "Weekly consultation schedules, shift hours, and slot durations.",
+          "is_completed": false,
+          "data": []
+        },
+        {
+          "key": "images",
+          "step_number": 5,
+          "title": "Clinic Photos & Verification Documents",
+          "description": "Doctor profile photo, registration certificate, and clinic interior/exterior photos.",
+          "is_completed": false,
+          "data": {}
+        }
+      ],
+      "draft_data": {}
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.5 Step 1: Doctor Profile & License",
+    "method": "POST",
+    "url": "/api/practices/onboarding/step/doctor-profile/",
+    "request_body": {
+      "first_name": "Aditi",
+      "last_name": "Sharma",
+      "title": "Dr.",
+      "gender": "female",
+      "medical_license_number": "MCI-2015-106038",
+      "registration_council": "Maharashtra Medical Council",
+      "registration_year": 2015,
+      "specialization": "Dermatology & Cosmetology",
+      "qualifications": "MBBS, MD (Dermatology)",
+      "experience_years": 11,
+      "languages_spoken": "English, Hindi, Marathi",
+      "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+      "default_consultation_fee": 800.0
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Doctor profile & registration number saved successfully.",
+      "doctor_profile": {
+        "id": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+        "user_name": "Aditi Sharma",
+        "user_email": null,
+        "user_phone": "+919856925418",
+        "user_avatar": null,
+        "title": "Dr.",
+        "gender": "female",
+        "medical_license_number": "MCI-2015-106038",
+        "registration_council": "Maharashtra Medical Council",
+        "registration_year": 2015,
+        "specialization": "Dermatology & Cosmetology",
+        "qualifications": "MBBS, MD (Dermatology)",
+        "experience_years": 11,
+        "languages_spoken": "English, Hindi, Marathi",
+        "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+        "default_consultation_fee": "800.00",
+        "profile_photo": null,
+        "profile_photo_url": "",
+        "photo_display_url": null,
+        "registration_certificate": null,
+        "registration_certificate_url": "",
+        "is_verified": false,
+        "created_at": "2026-10-29T04:53:17.368152Z",
+        "updated_at": "2026-10-29T04:53:17.368185Z"
+      },
+      "progress_percentage": 20,
+      "current_step": "clinic_details"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.6 Step 2: Clinic & Practice Details",
+    "method": "POST",
+    "url": "/api/practices/onboarding/step/clinic-details/",
+    "request_body": {
+      "name": "Arogya Skin Clinic 106038",
+      "clinic_type": "solo_clinic",
+      "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+      "about": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+      "phone_number": "+919856925418",
+      "email": "dr.aditi_106038@arogyaclinic.com",
+      "website": "https://arogyaclinic.com",
+      "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+      "landmark": "Opposite National College",
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "postal_code": "400050",
+      "country": "India",
+      "established_year": 2018,
+      "currency": "INR",
+      "timezone": "Asia/Kolkata"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Clinic details saved successfully.",
+      "practice": {
+        "id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "name": "Arogya Skin Clinic 106038",
+        "slug": "arogya-skin-clinic-106038-386b2a6b",
+        "owner_name": "Aditi Sharma",
+        "owner_email": null,
+        "clinic_type": "solo_clinic",
+        "clinic_type_display": "Solo Clinic / Private Practice",
+        "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+        "about": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+        "phone_number": "+919856925418",
+        "email": "dr.aditi_106038@arogyaclinic.com",
+        "website": "https://arogyaclinic.com",
+        "logo_url": "",
+        "logo_image": null,
+        "logo_display_url": "",
+        "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+        "landmark": "Opposite National College",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "postal_code": "400050",
+        "country": "India",
+        "gst_number": "",
+        "established_year": 2018,
+        "currency": "INR",
+        "timezone": "Asia/Kolkata",
+        "is_active": true,
+        "members_count": 1,
+        "current_user_role": "owner",
+        "created_at": "2026-10-29T04:53:17.477611Z",
+        "updated_at": "2026-10-29T04:53:17.477647Z"
+      },
+      "progress_percentage": 40,
+      "current_step": "services"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.7 Step 3: Clinical Services Catalog",
+    "method": "POST",
+    "url": "/api/practices/onboarding/step/services/",
+    "request_body": {
+      "services": [
+        {
+          "name": "General Dermatology Consultation",
+          "category": "consultation",
+          "description": "Comprehensive evaluation of skin conditions.",
+          "duration_minutes": 20,
+          "price": 800.0,
+          "is_teleconsultation": true
+        },
+        {
+          "name": "Acne & Scar Laser Treatment",
+          "category": "procedure",
+          "description": "Fractional CO2 laser therapy.",
+          "duration_minutes": 45,
+          "price": 3500.0,
+          "is_teleconsultation": false
+        }
+      ]
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Saved 2 services successfully.",
+      "services": [
+        {
+          "id": "acaee104-b9c2-4340-b35d-6da7016b772e",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "doctor": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+          "doctor_name": "Aditi Sharma",
+          "name": "General Dermatology Consultation",
+          "category": "consultation",
+          "category_display": "Consultation",
+          "description": "Comprehensive evaluation of skin conditions.",
+          "duration_minutes": 20,
+          "price": "800.00",
+          "is_active": true,
+          "is_teleconsultation": true,
+          "created_at": "2026-10-29T04:53:17.522288Z",
+          "updated_at": "2026-10-29T04:53:17.522350Z"
+        },
+        {
+          "id": "11e66b7f-2e75-4ae3-be30-6f510e901d11",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "doctor": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+          "doctor_name": "Aditi Sharma",
+          "name": "Acne & Scar Laser Treatment",
+          "category": "procedure",
+          "category_display": "Clinical Procedure",
+          "description": "Fractional CO2 laser therapy.",
+          "duration_minutes": 45,
+          "price": "3500.00",
+          "is_active": true,
+          "is_teleconsultation": false,
+          "created_at": "2026-10-29T04:53:17.523482Z",
+          "updated_at": "2026-10-29T04:53:17.523522Z"
+        }
+      ],
+      "progress_percentage": 60,
+      "current_step": "timings"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.8 Step 4: OPD Consultation Timings",
+    "method": "POST",
+    "url": "/api/practices/onboarding/step/timings/",
+    "request_body": {
+      "timings": [
+        {
+          "day_of_week": 0,
+          "session_name": "Morning OPD",
+          "start_time": "10:00:00",
+          "end_time": "13:30:00",
+          "slot_duration_minutes": 20
+        },
+        {
+          "day_of_week": 0,
+          "session_name": "Evening Clinic",
+          "start_time": "17:00:00",
+          "end_time": "20:30:00",
+          "slot_duration_minutes": 20
+        },
+        {
+          "day_of_week": 5,
+          "session_name": "Weekend Special OPD",
+          "start_time": "10:00:00",
+          "end_time": "15:00:00",
+          "slot_duration_minutes": 20
+        }
+      ]
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Saved 3 schedule timing slots successfully.",
+      "timings": [
+        {
+          "id": "58930efe-2712-4542-94dd-6ce349085bc0",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "doctor": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+          "doctor_name": "Aditi Sharma",
+          "day_of_week": 0,
+          "day_of_week_display": "Monday",
+          "session_name": "Morning OPD",
+          "start_time": "10:00:00",
+          "end_time": "13:30:00",
+          "slot_duration_minutes": 20,
+          "is_active": true,
+          "created_at": "2026-10-29T04:53:17.553868Z",
+          "updated_at": "2026-10-29T04:53:17.553900Z"
+        },
+        {
+          "id": "33768804-ba30-44d2-8f44-6f78c9884cce",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "doctor": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+          "doctor_name": "Aditi Sharma",
+          "day_of_week": 0,
+          "day_of_week_display": "Monday",
+          "session_name": "Evening Clinic",
+          "start_time": "17:00:00",
+          "end_time": "20:30:00",
+          "slot_duration_minutes": 20,
+          "is_active": true,
+          "created_at": "2026-10-29T04:53:17.556650Z",
+          "updated_at": "2026-10-29T04:53:17.556677Z"
+        },
+        {
+          "id": "287cbe2b-2290-4752-8a6c-ab136ea6e3ed",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "doctor": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+          "doctor_name": "Aditi Sharma",
+          "day_of_week": 5,
+          "day_of_week_display": "Saturday",
+          "session_name": "Weekend Special OPD",
+          "start_time": "10:00:00",
+          "end_time": "15:00:00",
+          "slot_duration_minutes": 20,
+          "is_active": true,
+          "created_at": "2026-10-29T04:53:17.557155Z",
+          "updated_at": "2026-10-29T04:53:17.557184Z"
+        }
+      ],
+      "progress_percentage": 80,
+      "current_step": "images"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.9 Step 5: Clinic Photos & Verification Documents",
+    "method": "POST",
+    "url": "/api/practices/onboarding/step/images/",
+    "request_body": {
+      "doctor_avatar_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+      "registration_certificate_url": "https://clinicrise-media.s3.amazonaws.com/certs/mci-cert.pdf",
+      "images": [
+        {
+          "image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+          "image_type": "reception",
+          "caption": "Executive Patient Waiting Lounge & Reception",
+          "is_primary": true,
+          "order": 1
+        }
+      ]
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Images and verification documents saved successfully.",
+      "clinic_images": [
+        {
+          "id": "0d56e7a3-4727-4536-b33c-57433e2c6afb",
+          "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "image": null,
+          "image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+          "image_type": "reception",
+          "image_type_display": "Reception / Frontdesk",
+          "caption": "Executive Patient Waiting Lounge & Reception",
+          "is_primary": true,
+          "order": 1,
+          "created_at": "2026-10-29T04:53:17.588041Z",
+          "updated_at": "2026-10-29T04:53:17.588086Z"
+        }
+      ],
+      "progress_percentage": 100,
+      "current_step": "review"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.10 Finalize Doctor Onboarding",
+    "method": "POST",
+    "url": "/api/practices/onboarding/complete/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Congratulations Dr. Aditi Sharma! Your clinic 'Arogya Skin Clinic 106038' is now fully onboarded and ready.",
+      "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "practice": {
+        "id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "name": "Arogya Skin Clinic 106038",
+        "slug": "arogya-skin-clinic-106038-386b2a6b",
+        "owner_name": "Aditi Sharma",
+        "owner_email": null,
+        "clinic_type": "solo_clinic",
+        "clinic_type_display": "Solo Clinic / Private Practice",
+        "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+        "about": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+        "phone_number": "+919856925418",
+        "email": "dr.aditi_106038@arogyaclinic.com",
+        "website": "https://arogyaclinic.com",
+        "logo_url": "",
+        "logo_image": null,
+        "logo_display_url": "",
+        "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+        "landmark": "Opposite National College",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "postal_code": "400050",
+        "country": "India",
+        "gst_number": "",
+        "established_year": 2018,
+        "currency": "INR",
+        "timezone": "Asia/Kolkata",
+        "is_active": true,
+        "members_count": 1,
+        "current_user_role": "owner",
+        "created_at": "2026-10-29T04:53:17.477611Z",
+        "updated_at": "2026-10-29T04:53:17.477647Z"
+      },
+      "doctor_profile": {
+        "id": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+        "user_name": "Aditi Sharma",
+        "user_email": null,
+        "user_phone": "+919856925418",
+        "user_avatar": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+        "title": "Dr.",
+        "gender": "female",
+        "medical_license_number": "MCI-2015-106038",
+        "registration_council": "Maharashtra Medical Council",
+        "registration_year": 2015,
+        "specialization": "Dermatology & Cosmetology",
+        "qualifications": "MBBS, MD (Dermatology)",
+        "experience_years": 11,
+        "languages_spoken": "English, Hindi, Marathi",
+        "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+        "default_consultation_fee": "800.00",
+        "profile_photo": null,
+        "profile_photo_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+        "photo_display_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+        "registration_certificate": null,
+        "registration_certificate_url": "https://clinicrise-media.s3.amazonaws.com/certs/mci-cert.pdf",
+        "is_verified": false,
+        "created_at": "2026-10-29T04:53:17.368152Z",
+        "updated_at": "2026-10-29T04:53:17.368185Z"
+      },
+      "onboarding": {
+        "id": "d7a54548-253c-4a11-b970-cfa48898daa2",
+        "user": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+        "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "practice_name": "Arogya Skin Clinic 106038",
+        "current_step": "completed",
+        "current_step_display": "Onboarding Completed",
+        "completed_steps": [
+          "doctor_profile",
+          "services",
+          "timings",
+          "images",
+          "clinic_details",
+          "review"
+        ],
+        "draft_data": {
+          "doctor_profile": {
+            "first_name": "Aditi",
+            "last_name": "Sharma",
+            "title": "Dr.",
+            "gender": "female",
+            "medical_license_number": "MCI-2015-106038",
+            "registration_council": "Maharashtra Medical Council",
+            "registration_year": 2015,
+            "specialization": "Dermatology & Cosmetology",
+            "qualifications": "MBBS, MD (Dermatology)",
+            "experience_years": 11,
+            "languages_spoken": "English, Hindi, Marathi",
+            "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+            "default_consultation_fee": "800.00"
+          },
+          "clinic_details": {
+            "name": "Arogya Skin Clinic 106038",
+            "clinic_type": "solo_clinic",
+            "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+            "about": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+            "phone_number": "+919856925418",
+            "email": "dr.aditi_106038@arogyaclinic.com",
+            "website": "https://arogyaclinic.com",
+            "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+            "landmark": "Opposite National College",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "postal_code": "400050",
+            "country": "India",
+            "established_year": 2018,
+            "currency": "INR",
+            "timezone": "Asia/Kolkata"
+          },
+          "services": {
+            "services": [
+              {
+                "name": "General Dermatology Consultation",
+                "category": "consultation",
+                "description": "Comprehensive evaluation of skin conditions.",
+                "duration_minutes": 20,
+                "price": 800.0,
+                "is_teleconsultation": true
+              },
+              {
+                "name": "Acne & Scar Laser Treatment",
+                "category": "procedure",
+                "description": "Fractional CO2 laser therapy.",
+                "duration_minutes": 45,
+                "price": 3500.0,
+                "is_teleconsultation": false
+              }
+            ]
+          },
+          "timings": {
+            "timings": [
+              {
+                "day_of_week": 0,
+                "session_name": "Morning OPD",
+                "start_time": "10:00:00",
+                "end_time": "13:30:00",
+                "slot_duration_minutes": 20
+              },
+              {
+                "day_of_week": 0,
+                "session_name": "Evening Clinic",
+                "start_time": "17:00:00",
+                "end_time": "20:30:00",
+                "slot_duration_minutes": 20
+              },
+              {
+                "day_of_week": 5,
+                "session_name": "Weekend Special OPD",
+                "start_time": "10:00:00",
+                "end_time": "15:00:00",
+                "slot_duration_minutes": 20
+              }
+            ]
+          },
+          "images": {
+            "doctor_avatar_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+            "registration_certificate_url": "https://clinicrise-media.s3.amazonaws.com/certs/mci-cert.pdf",
+            "images": [
+              {
+                "image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+                "image_type": "reception",
+                "caption": "Executive Patient Waiting Lounge & Reception",
+                "is_primary": true,
+                "order": 1
+              }
+            ]
+          }
+        },
+        "is_completed": true,
+        "completed_at": "2026-10-29T04:53:17.613164Z",
+        "progress_percentage": 100,
+        "created_at": "2026-10-29T04:53:17.332339Z",
+        "updated_at": "2026-10-29T04:53:17.613338Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.11 Practice Staff Invitation",
+    "method": "POST",
+    "url": "/api/practices/4df3067d-ac3d-437f-8de9-0e594eb1eeb0/invite/",
+    "request_body": {
+      "identifier": "reception_106038@arogyaclinic.com",
+      "role": "staff"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Invitation generated for reception_106038@arogyaclinic.com as staff.",
+      "invitation": {
+        "id": "05cbe940-22d3-4616-a5cc-7e09d0504fe3",
+        "practice_name": "Arogya Skin Clinic 106038",
+        "email": "reception_106038@arogyaclinic.com",
+        "phone_number": null,
+        "role": "staff",
+        "role_display": "General Staff",
+        "invite_code": "ml-9Vs2aychdjfkHjIZKkkRKKZiS__cg32VNNtoVOJk",
+        "status": "pending",
+        "invited_by_name": "Aditi Sharma",
+        "created_at": "2026-10-29T04:53:17.653463Z",
+        "expires_at": "2026-11-05T04:53:17.653004Z"
+      },
+      "invite_code": "ml-9Vs2aychdjfkHjIZKkkRKKZiS__cg32VNNtoVOJk"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 1,
+    "step": "1.12 Accept Staff Invitation",
+    "method": "POST",
+    "url": "/api/practices/invitations/accept/",
+    "request_body": {
+      "invite_code": "ml-9Vs2aychdjfkHjIZKkkRKKZiS__cg32VNNtoVOJk"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Successfully joined Arogya Skin Clinic 106038 as General Staff.",
+      "practice": {
+        "id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "name": "Arogya Skin Clinic 106038",
+        "slug": "arogya-skin-clinic-106038-386b2a6b",
+        "owner_name": "Aditi Sharma",
+        "owner_email": null,
+        "clinic_type": "solo_clinic",
+        "clinic_type_display": "Solo Clinic / Private Practice",
+        "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+        "about": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+        "phone_number": "+919856925418",
+        "email": "dr.aditi_106038@arogyaclinic.com",
+        "website": "https://arogyaclinic.com",
+        "logo_url": "",
+        "logo_image": null,
+        "logo_display_url": "",
+        "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+        "landmark": "Opposite National College",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "postal_code": "400050",
+        "country": "India",
+        "gst_number": "",
+        "established_year": 2018,
+        "currency": "INR",
+        "timezone": "Asia/Kolkata",
+        "is_active": true,
+        "members_count": 2,
+        "current_user_role": "staff",
+        "created_at": "2026-10-29T04:53:17.477611Z",
+        "updated_at": "2026-10-29T04:53:17.477647Z"
+      },
+      "membership": {
+        "id": "74a1c2cb-b369-4692-91d3-4716444245d3",
+        "user_id": "e4b4768b-44ed-4d59-9236-b336421eecc4",
+        "user_name": "reception_106038@arogyaclinic.com",
+        "user_email": "reception_106038@arogyaclinic.com",
+        "user_phone": "+919865595446",
+        "user_avatar": null,
+        "role": "staff",
+        "role_display": "General Staff",
+        "is_active": true,
+        "joined_at": "2026-10-29T04:53:18.456006Z",
+        "doctor_profile": null
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.1 1-Click Clinic Website Generation",
+    "method": "POST",
+    "url": "/api/websites/generate/",
+    "request_body": {
+      "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "subdomain": "arogya106038",
+      "template_style": "modern_minimal",
+      "auto_publish": true
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Website 'Arogya Skin Clinic 106038' generated successfully!",
+      "public_url": "https://arogya106038.clinicrise.com",
+      "website": {
+        "id": "28360824-4294-4870-8029-6388ccf07c0e",
+        "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "title": "Arogya Skin Clinic 106038",
+        "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+        "subdomain": "arogya106038",
+        "public_url": "https://arogya106038.clinicrise.com",
+        "template_style": "modern_minimal",
+        "template_style_display": "Modern Minimalist (Sleek, Typography-focused)",
+        "primary_color": "#0D9488",
+        "secondary_color": "#0F172A",
+        "font_family": "Inter",
+        "logo_url": "",
+        "favicon_url": null,
+        "header_cta_text": "Book Appointment",
+        "header_cta_link": "#appointment",
+        "footer_text": "\u00a9 2026 Arogya Skin Clinic 106038. All rights reserved.",
+        "contact_phone": "+919856925418",
+        "contact_email": "dr.aditi_106038@arogyaclinic.com",
+        "whatsapp_number": "",
+        "emergency_contact": "",
+        "google_maps_url": null,
+        "facebook_url": null,
+        "instagram_url": null,
+        "linkedin_url": null,
+        "meta_title": "Arogya Skin Clinic 106038 | Doctor Consultation & Healthcare in Mumbai",
+        "meta_description": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+        "meta_keywords": "",
+        "og_image_url": null,
+        "google_analytics_id": "",
+        "is_published": true,
+        "is_maintenance": false,
+        "has_unpublished_changes": false,
+        "published_at": "2026-10-29T04:53:18.721189Z",
+        "pages_count": 4,
+        "pages": [
+          {
+            "id": "c16d78bb-0414-4e08-9288-a99d3201ac73",
+            "title": "Home",
+            "slug": "home",
+            "is_homepage": true,
+            "page_type": "home",
+            "page_type_display": "Home Page",
+            "is_in_navigation": true,
+            "is_in_footer": true,
+            "nav_order": 1,
+            "is_published": true,
+            "has_unpublished_changes": false,
+            "published_version": 2,
+            "published_at": "2026-10-29T04:53:18.650466Z",
+            "updated_at": "2026-10-29T04:53:18.650592Z"
+          },
+          {
+            "id": "4a0c0ad7-ade9-46dd-a2cf-5f79e619c557",
+            "title": "About Us",
+            "slug": "about",
+            "is_homepage": false,
+            "page_type": "about",
+            "page_type_display": "About Clinic & Doctors",
+            "is_in_navigation": true,
+            "is_in_footer": true,
+            "nav_order": 2,
+            "is_published": true,
+            "has_unpublished_changes": false,
+            "published_version": 2,
+            "published_at": "2026-10-29T04:53:18.671832Z",
+            "updated_at": "2026-10-29T04:53:18.672007Z"
+          },
+          {
+            "id": "20be072c-6dce-4452-9b55-8d9470cd3cff",
+            "title": "Services",
+            "slug": "services",
+            "is_homepage": false,
+            "page_type": "services",
+            "page_type_display": "Treatments & Services",
+            "is_in_navigation": true,
+            "is_in_footer": true,
+            "nav_order": 3,
+            "is_published": true,
+            "has_unpublished_changes": false,
+            "published_version": 2,
+            "published_at": "2026-10-29T04:53:18.686511Z",
+            "updated_at": "2026-10-29T04:53:18.686716Z"
+          },
+          {
+            "id": "278e5bba-bcd8-4d2b-97ac-2f8a7788039f",
+            "title": "Contact Us",
+            "slug": "contact",
+            "is_homepage": false,
+            "page_type": "contact",
+            "page_type_display": "Contact & Clinic Hours",
+            "is_in_navigation": true,
+            "is_in_footer": true,
+            "nav_order": 4,
+            "is_published": true,
+            "has_unpublished_changes": false,
+            "published_version": 2,
+            "published_at": "2026-10-29T04:53:18.702027Z",
+            "updated_at": "2026-10-29T04:53:18.702254Z"
+          }
+        ],
+        "custom_domains": [],
+        "created_at": "2026-10-29T04:53:18.491558Z",
+        "updated_at": "2026-10-29T04:53:18.721467Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.2 Live Website Public Rendering",
+    "method": "GET",
+    "url": "/api/websites/public/arogya106038/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "website": {
+        "id": "28360824-4294-4870-8029-6388ccf07c0e",
+        "title": "Arogya Skin Clinic 106038",
+        "tagline": "Advanced Dermatological Care & Aesthetic Wellness",
+        "template_style": "modern_minimal",
+        "primary_color": "#0D9488",
+        "secondary_color": "#0F172A",
+        "font_family": "Inter",
+        "logo_url": "",
+        "favicon_url": null,
+        "header_cta_text": "Book Appointment",
+        "header_cta_link": "#appointment",
+        "footer_text": "\u00a9 2026 Arogya Skin Clinic 106038. All rights reserved.",
+        "contact_phone": "+919856925418",
+        "contact_email": "dr.aditi_106038@arogyaclinic.com",
+        "whatsapp_number": "",
+        "emergency_contact": "",
+        "google_maps_url": null,
+        "google_analytics_id": ""
+      },
+      "seo": {
+        "meta_title": "Arogya Skin Clinic 106038 - Official Clinic Website",
+        "meta_description": "Welcome to Arogya Skin Clinic 106038. Schedule appointment with qualified specialists in Mumbai.",
+        "og_image_url": null
+      },
+      "navigation": [
+        {
+          "title": "Home",
+          "slug": "home",
+          "is_homepage": true
+        },
+        {
+          "title": "About Us",
+          "slug": "about",
+          "is_homepage": false
+        },
+        {
+          "title": "Services",
+          "slug": "services",
+          "is_homepage": false
+        },
+        {
+          "title": "Contact Us",
+          "slug": "contact",
+          "is_homepage": false
+        }
+      ],
+      "page": {
+        "id": "c16d78bb-0414-4e08-9288-a99d3201ac73",
+        "title": "Home",
+        "slug": "home",
+        "is_homepage": true,
+        "content": {
+          "sections": [
+            {
+              "id": "hero-section",
+              "type": "hero",
+              "headline": "Compassionate, World-Class Healthcare at Arogya Skin Clinic 106038",
+              "subheadline": "Advanced Dermatological Care & Aesthetic Wellness",
+              "badge": "Accepting New Patients Today",
+              "cta_primary": {
+                "text": "Book Appointment",
+                "link": "#appointment"
+              },
+              "cta_secondary": {
+                "text": "Explore Services",
+                "link": "/services"
+              },
+              "hero_image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+              "trust_stats": [
+                {
+                  "label": "Patient Satisfaction",
+                  "value": "98%"
+                },
+                {
+                  "label": "Clinical Experience",
+                  "value": "15+ Yrs"
+                },
+                {
+                  "label": "Verified Specialists",
+                  "value": "100%"
+                }
+              ]
+            },
+            {
+              "id": "about-section",
+              "type": "about",
+              "title": "Why Choose Arogya Skin Clinic 106038?",
+              "subtitle": "Patient-centric care powered by modern diagnostic standards",
+              "content": "Arogya Clinic provides evidence-based clinical dermatology and cutting-edge aesthetic care in Mumbai.",
+              "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West, Opposite National College, Mumbai, Maharashtra 400050",
+              "features": [
+                "Zero Waiting Times with Pre-booked Appointments",
+                "Digitized Prescriptions & Health Records",
+                "Hygienic, State-of-the-art Clinical Facilities",
+                "Transparent Pricing & Direct Specialist Care"
+              ]
+            },
+            {
+              "id": "services-section",
+              "type": "services_list",
+              "title": "Specialized Treatments & Clinical Services",
+              "subtitle": "Discover our comprehensive range of general and specialized medical services",
+              "services": [
+                {
+                  "id": "11e66b7f-2e75-4ae3-be30-6f510e901d11",
+                  "name": "Acne & Scar Laser Treatment",
+                  "category": "Clinical Procedure",
+                  "description": "Fractional CO2 laser therapy.",
+                  "duration": "45 Mins",
+                  "price": "INR 3500.00"
+                },
+                {
+                  "id": "acaee104-b9c2-4340-b35d-6da7016b772e",
+                  "name": "General Dermatology Consultation",
+                  "category": "Consultation",
+                  "description": "Comprehensive evaluation of skin conditions.",
+                  "duration": "20 Mins",
+                  "price": "INR 800.00"
+                }
+              ],
+              "view_all_link": "/services"
+            },
+            {
+              "id": "doctors-section",
+              "type": "doctor_roster",
+              "title": "Meet Our Medical Practitioners",
+              "subtitle": "Dedicated specialists focused on delivering exceptional patient outcomes",
+              "doctors": [
+                {
+                  "id": "63d10563-c67e-45f3-9046-b70c6d9c3f3d",
+                  "name": "Dr. Aditi Sharma",
+                  "specialization": "Dermatology & Cosmetology",
+                  "qualifications": "MBBS, MD (Dermatology)",
+                  "experience_years": "11+ Years Experience",
+                  "bio": "Dr. Aditi Sharma is a board-certified Dermatologist specializing in clinical dermatology and laser skin treatments.",
+                  "photo_url": "https://clinicrise-media.s3.amazonaws.com/doctors/dr-aditi.jpg",
+                  "consultation_fee": "INR 800.00"
+                }
+              ]
+            },
+            {
+              "id": "timings-section",
+              "type": "schedule_timings",
+              "title": "Clinic Hours & Consultation Timetable",
+              "subtitle": "Plan your visit conveniently during our active clinic shifts",
+              "emergency_note": "For medical emergencies, please call +919856925418.",
+              "timings": [
+                {
+                  "day": "Monday",
+                  "session": "Morning OPD",
+                  "time": "10:00 AM - 01:30 PM"
+                },
+                {
+                  "day": "Monday",
+                  "session": "Evening Clinic",
+                  "time": "05:00 PM - 08:30 PM"
+                },
+                {
+                  "day": "Saturday",
+                  "session": "Weekend Special OPD",
+                  "time": "10:00 AM - 03:00 PM"
+                }
+              ]
+            },
+            {
+              "id": "testimonials-section",
+              "type": "testimonials",
+              "title": "Real Experiences from Our Patients",
+              "subtitle": "Trusted by hundreds of families in our local community",
+              "testimonials": [
+                {
+                  "patient_name": "Rohan Mehra",
+                  "comment": "The consultation at Arogya Skin Clinic 106038 was incredibly thorough. The doctor listened attentively and explained everything clearly.",
+                  "rating": 5,
+                  "treatment": "General Consultation"
+                },
+                {
+                  "patient_name": "Sunita Rao",
+                  "comment": "Extremely clean clinic and very professional staff. Zero waiting time and excellent post-consultation guidance.",
+                  "rating": 5,
+                  "treatment": "Specialist Visit"
+                }
+              ]
+            },
+            {
+              "id": "gallery-section",
+              "type": "gallery",
+              "title": "Clinic Facilities & Environment",
+              "subtitle": "A calm, modern, and sterile healing atmosphere",
+              "images": [
+                {
+                  "image_url": "https://clinicrise-media.s3.amazonaws.com/clinic/reception.jpg",
+                  "caption": "Executive Patient Waiting Lounge & Reception",
+                  "type": "reception"
+                }
+              ]
+            },
+            {
+              "id": "contact-section",
+              "type": "contact_map",
+              "title": "Get in Touch & Book an Appointment",
+              "subtitle": "Located conveniently in Mumbai. Reach out to schedule your visit.",
+              "phone": "+919856925418",
+              "email": "dr.aditi_106038@arogyaclinic.com",
+              "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+              "city": "Mumbai",
+              "state": "Maharashtra",
+              "postal_code": "400050",
+              "landmark": "Opposite National College"
+            }
+          ]
+        },
+        "published_at": "2026-10-29T04:53:18.650466Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.3 Custom Domain Connection",
+    "method": "POST",
+    "url": "/api/websites/28360824-4294-4870-8029-6388ccf07c0e/domains/",
+    "request_body": {
+      "domain": "drsharma106038.com"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Domain 'drsharma106038.com' added. Please configure the DNS records shown below.",
+      "domain": {
+        "id": "5fed0881-f9bd-4f67-aee6-863df4157dd9",
+        "website": "28360824-4294-4870-8029-6388ccf07c0e",
+        "domain": "drsharma106038.com",
+        "is_primary": false,
+        "status": "pending_verification",
+        "status_display": "Pending DNS Verification",
+        "ssl_status": "pending",
+        "ssl_status_display": "Pending SSL Certificate",
+        "verification_token": "clinicrise-verify-598ea433fb81d39ad23a3e399e85f51e",
+        "cname_target": "sites.clinicrise.com",
+        "dns_instructions": {
+          "domain": "drsharma106038.com",
+          "status": "pending_verification",
+          "ssl_status": "pending",
+          "is_verified": false,
+          "required_records": [
+            {
+              "type": "CNAME",
+              "host": "www",
+              "value": "sites.clinicrise.com",
+              "ttl": "Automatic / 300",
+              "purpose": "Points your web traffic to ClinicRise secure edge hosting"
+            },
+            {
+              "type": "TXT",
+              "host": "_clinicrise-challenge.drsharma106038.com",
+              "value": "clinicrise-verify-598ea433fb81d39ad23a3e399e85f51e",
+              "ttl": "300",
+              "purpose": "Proves domain ownership to ClinicRise"
+            }
+          ],
+          "last_verified_at": null
+        },
+        "last_verified_at": null,
+        "created_at": "2026-10-29T04:53:18.778835Z",
+        "updated_at": "2026-10-29T04:53:18.778871Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.4 DNS Domain Verification",
+    "method": "POST",
+    "url": "/api/websites/28360824-4294-4870-8029-6388ccf07c0e/domains/5fed0881-f9bd-4f67-aee6-863df4157dd9/verify/",
+    "request_body": {
+      "simulate": true
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Domain DNS verified and SSL certificate successfully provisioned!",
+      "domain": {
+        "id": "5fed0881-f9bd-4f67-aee6-863df4157dd9",
+        "website": "28360824-4294-4870-8029-6388ccf07c0e",
+        "domain": "drsharma106038.com",
+        "is_primary": false,
+        "status": "active",
+        "status_display": "Active & Secured (Live)",
+        "ssl_status": "issued",
+        "ssl_status_display": "SSL Active (HTTPS Secured)",
+        "verification_token": "clinicrise-verify-598ea433fb81d39ad23a3e399e85f51e",
+        "cname_target": "sites.clinicrise.com",
+        "dns_instructions": {
+          "domain": "drsharma106038.com",
+          "status": "active",
+          "ssl_status": "issued",
+          "is_verified": true,
+          "required_records": [
+            {
+              "type": "CNAME",
+              "host": "www",
+              "value": "sites.clinicrise.com",
+              "ttl": "Automatic / 300",
+              "purpose": "Points your web traffic to ClinicRise secure edge hosting"
+            },
+            {
+              "type": "TXT",
+              "host": "_clinicrise-challenge.drsharma106038.com",
+              "value": "clinicrise-verify-598ea433fb81d39ad23a3e399e85f51e",
+              "ttl": "300",
+              "purpose": "Proves domain ownership to ClinicRise"
+            }
+          ],
+          "last_verified_at": "2026-10-29T04:53:18.801655Z"
+        },
+        "last_verified_at": "2026-10-29T04:53:18.801655Z",
+        "created_at": "2026-10-29T04:53:18.778835Z",
+        "updated_at": "2026-10-29T04:53:18.801771Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.5 Unified Content Approval Queue",
+    "method": "GET",
+    "url": "/api/websites/28360824-4294-4870-8029-6388ccf07c0e/approvals/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "total_pending": 1,
+      "total_approved": 0,
+      "total_changes_requested": 0,
+      "items": [
+        {
+          "id": "d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec",
+          "title": "Laser Hair Removal Treatments",
+          "slug": "laser-hair-removal-106038",
+          "content_type": "page",
+          "page_type": "services",
+          "approval_status": "pending_approval",
+          "submitted_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "+919856925418",
+            "email": null
+          },
+          "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+          "submission_notes": "Added clinical laser description",
+          "reviewed_by": null,
+          "reviewed_at": null,
+          "review_notes": "",
+          "has_unpublished_changes": true,
+          "is_published": false,
+          "updated_at": "2026-10-29T04:53:18.820275Z"
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.6 Doctor Review & Approve Page",
+    "method": "POST",
+    "url": "/api/websites/28360824-4294-4870-8029-6388ccf07c0e/pages/d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec/review/",
+    "request_body": {
+      "action": "approve",
+      "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Content approved for publication.",
+      "approval_status": "approved",
+      "approval": {
+        "status": "approved",
+        "submitted_by": {
+          "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "name": "+919856925418",
+          "email": null
+        },
+        "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+        "submission_notes": "Added clinical laser description",
+        "reviewed_by": {
+          "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "name": "Dr. Aditi Sharma",
+          "email": null
+        },
+        "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+        "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+        "history": [
+          {
+            "action": "submitted_for_review",
+            "user": "+919856925418",
+            "timestamp": "2026-10-29T04:53:18.819995+00:00",
+            "notes": "Added clinical laser description"
+          },
+          {
+            "action": "approved",
+            "doctor": "Dr. Aditi Sharma",
+            "timestamp": "2026-10-29T04:53:18.864109+00:00",
+            "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+          }
+        ]
+      },
+      "page": {
+        "id": "d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec",
+        "website": "28360824-4294-4870-8029-6388ccf07c0e",
+        "title": "Laser Hair Removal Treatments",
+        "slug": "laser-hair-removal-106038",
+        "is_homepage": false,
+        "page_type": "services",
+        "page_type_display": "Treatments & Services",
+        "is_in_navigation": true,
+        "is_in_footer": true,
+        "nav_order": 0,
+        "meta_title": "",
+        "meta_description": "",
+        "draft_content": {
+          "sections": [
+            {
+              "heading": "Advanced Laser Hair Reduction"
+            }
+          ],
+          "approval": {
+            "status": "approved",
+            "submitted_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "+919856925418",
+              "email": null
+            },
+            "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+            "submission_notes": "Added clinical laser description",
+            "reviewed_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "Dr. Aditi Sharma",
+              "email": null
+            },
+            "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+            "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+            "history": [
+              {
+                "action": "submitted_for_review",
+                "user": "+919856925418",
+                "timestamp": "2026-10-29T04:53:18.819995+00:00",
+                "notes": "Added clinical laser description"
+              },
+              {
+                "action": "approved",
+                "doctor": "Dr. Aditi Sharma",
+                "timestamp": "2026-10-29T04:53:18.864109+00:00",
+                "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+              }
+            ]
+          }
+        },
+        "published_content": {},
+        "is_published": false,
+        "has_unpublished_changes": true,
+        "published_version": 0,
+        "revisions_count": 0,
+        "approval": {
+          "status": "approved",
+          "submitted_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "+919856925418",
+            "email": null
+          },
+          "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+          "submission_notes": "Added clinical laser description",
+          "reviewed_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "Dr. Aditi Sharma",
+            "email": null
+          },
+          "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+          "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+          "history": [
+            {
+              "action": "submitted_for_review",
+              "user": "+919856925418",
+              "timestamp": "2026-10-29T04:53:18.819995+00:00",
+              "notes": "Added clinical laser description"
+            },
+            {
+              "action": "approved",
+              "doctor": "Dr. Aditi Sharma",
+              "timestamp": "2026-10-29T04:53:18.864109+00:00",
+              "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+            }
+          ]
+        },
+        "published_at": null,
+        "created_at": "2026-10-29T04:53:18.812527Z",
+        "updated_at": "2026-10-29T04:53:18.865993Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 2,
+    "step": "2.7 Publish Approved Page",
+    "method": "POST",
+    "url": "/api/websites/28360824-4294-4870-8029-6388ccf07c0e/pages/d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec/publish/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Page 'Laser Hair Removal Treatments' published live (v1)!",
+      "page": {
+        "id": "d423fc2d-cbd1-47f8-8ea2-ec6b8a2685ec",
+        "website": "28360824-4294-4870-8029-6388ccf07c0e",
+        "title": "Laser Hair Removal Treatments",
+        "slug": "laser-hair-removal-106038",
+        "is_homepage": false,
+        "page_type": "services",
+        "page_type_display": "Treatments & Services",
+        "is_in_navigation": true,
+        "is_in_footer": true,
+        "nav_order": 0,
+        "meta_title": "",
+        "meta_description": "",
+        "draft_content": {
+          "sections": [
+            {
+              "heading": "Advanced Laser Hair Reduction"
+            }
+          ],
+          "approval": {
+            "status": "published",
+            "submitted_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "+919856925418",
+              "email": null
+            },
+            "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+            "submission_notes": "Added clinical laser description",
+            "reviewed_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "Dr. Aditi Sharma",
+              "email": null
+            },
+            "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+            "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+            "history": [
+              {
+                "action": "submitted_for_review",
+                "user": "+919856925418",
+                "timestamp": "2026-10-29T04:53:18.819995+00:00",
+                "notes": "Added clinical laser description"
+              },
+              {
+                "action": "approved",
+                "doctor": "Dr. Aditi Sharma",
+                "timestamp": "2026-10-29T04:53:18.864109+00:00",
+                "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+              }
+            ],
+            "published_at": "2026-10-29T04:53:18.907427+00:00"
+          }
+        },
+        "published_content": {
+          "sections": [
+            {
+              "heading": "Advanced Laser Hair Reduction"
+            }
+          ],
+          "approval": {
+            "status": "published",
+            "submitted_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "+919856925418",
+              "email": null
+            },
+            "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+            "submission_notes": "Added clinical laser description",
+            "reviewed_by": {
+              "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+              "name": "Dr. Aditi Sharma",
+              "email": null
+            },
+            "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+            "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+            "history": [
+              {
+                "action": "submitted_for_review",
+                "user": "+919856925418",
+                "timestamp": "2026-10-29T04:53:18.819995+00:00",
+                "notes": "Added clinical laser description"
+              },
+              {
+                "action": "approved",
+                "doctor": "Dr. Aditi Sharma",
+                "timestamp": "2026-10-29T04:53:18.864109+00:00",
+                "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+              }
+            ],
+            "published_at": "2026-10-29T04:53:18.907427+00:00"
+          }
+        },
+        "is_published": true,
+        "has_unpublished_changes": false,
+        "published_version": 1,
+        "revisions_count": 1,
+        "approval": {
+          "status": "published",
+          "submitted_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "+919856925418",
+            "email": null
+          },
+          "submitted_at": "2026-10-29T04:53:18.819995+00:00",
+          "submission_notes": "Added clinical laser description",
+          "reviewed_by": {
+            "id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+            "name": "Dr. Aditi Sharma",
+            "email": null
+          },
+          "reviewed_at": "2026-10-29T04:53:18.864109+00:00",
+          "review_notes": "Medically verified by Dr. Aditi Sharma. Approved for public publishing.",
+          "history": [
+            {
+              "action": "submitted_for_review",
+              "user": "+919856925418",
+              "timestamp": "2026-10-29T04:53:18.819995+00:00",
+              "notes": "Added clinical laser description"
+            },
+            {
+              "action": "approved",
+              "doctor": "Dr. Aditi Sharma",
+              "timestamp": "2026-10-29T04:53:18.864109+00:00",
+              "comments": "Medically verified by Dr. Aditi Sharma. Approved for public publishing."
+            }
+          ],
+          "published_at": "2026-10-29T04:53:18.907427+00:00"
+        },
+        "published_at": "2026-10-29T04:53:18.891981Z",
+        "created_at": "2026-10-29T04:53:18.812527Z",
+        "updated_at": "2026-10-29T04:53:18.892132Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 3,
+    "step": "3.1 10-Step GBP Setup Checklist",
+    "method": "GET",
+    "url": "/api/gbp/checklist/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "practice_name": "Arogya Skin Clinic 106038",
+      "progress": {
+        "total_items": 10,
+        "completed_items": 8,
+        "completion_percentage": 80.0,
+        "status_level": "Well Optimized (Minor Gaps)",
+        "badge_color": "#3B82F6",
+        "verification_status": "unverified",
+        "verification_status_display": "Not Verified / Setup Incomplete"
+      },
+      "checklist": [
+        {
+          "key": "business_name",
+          "category": "Profile Essentials",
+          "title": "Clinic Name & Branding",
+          "description": "Accurate, official legal clinic name compliant with Google guidelines (no keyword stuffing).",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "Arogya Skin Clinic 106038",
+          "recommendation": "Use your real-world clinic signage name (e.g. 'Apollo Dental Care')."
+        },
+        {
+          "key": "categories",
+          "category": "Profile Essentials",
+          "title": "Primary & Secondary Categories",
+          "description": "Google category indicating your exact medical specialty to appear in relevant 'near me' local searches.",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "Doctor",
+          "recommendation": "Set Primary Category to 'Doctor' and add specialty secondary categories."
+        },
+        {
+          "key": "location_address",
+          "category": "Profile Essentials",
+          "title": "Address & Map Pin Precision",
+          "description": "Consistent physical street address, building/suite number, landmark, and postal code matching official records.",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "Shop 4, Sunrise Heights, Linking Road, Bandra West, Mumbai",
+          "recommendation": "Ensure your street address and postal code exactly match your signage and municipal license."
+        },
+        {
+          "key": "phone_and_contact",
+          "category": "Profile Essentials",
+          "title": "Local Phone Number & WhatsApp",
+          "description": "Direct clinic phone line for incoming patient inquiries and one-click calls.",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "+919856925418",
+          "recommendation": "Use a direct landline or dedicated clinic mobile number that is answered during OPD hours."
+        },
+        {
+          "key": "operating_hours",
+          "category": "Patient Experience",
+          "title": "Consultation Hours & Split Shifts",
+          "description": "Up-to-date weekly operating hours including morning and evening OPD shifts.",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "3 doctor shift schedules active",
+          "recommendation": "Add your morning and evening consultation shifts so patients know when walk-ins and bookings are accepted."
+        },
+        {
+          "key": "website_and_appointment_links",
+          "category": "Patient Experience",
+          "title": "Website URL & Appointment Deep-Link",
+          "description": "Direct link to your live clinic website and online appointment booking engine.",
+          "is_completed": true,
+          "priority": "high",
+          "current_value": "https://arogya106038.clinicrise.com",
+          "recommendation": "Link your live ClinicRise website and add the dedicated appointment booking link."
+        },
+        {
+          "key": "clinic_photos",
+          "category": "Visuals & Branding",
+          "title": "High-Quality Clinic Photos (Min. 5)",
+          "description": "Clear exterior building facade with signage, reception lounge, consultation desks, and modern medical equipment.",
+          "is_completed": false,
+          "priority": "medium",
+          "current_value": "1 practice photos uploaded",
+          "recommendation": "Upload at least 5 photos: exterior with street view, reception desk, consultation room, and team portrait."
+        },
+        {
+          "key": "services_menu",
+          "category": "Visuals & Branding",
+          "title": "Treatments & Services Menu",
+          "description": "List of medical procedures and consultation services with transparent fee estimates and descriptions.",
+          "is_completed": true,
+          "priority": "medium",
+          "current_value": "2 clinical services registered",
+          "recommendation": "Add your primary treatments and consultations so patients can view services directly on Google Maps."
+        },
+        {
+          "key": "attributes_accessibility",
+          "category": "Patient Experience",
+          "title": "Accessibility & Payment Attributes",
+          "description": "Highlight wheelchair accessibility, payment methods accepted (UPI, Credit Cards), and appointment policies.",
+          "is_completed": true,
+          "priority": "medium",
+          "current_value": "Wheelchair accessible, UPI/Cards accepted",
+          "recommendation": "Enable wheelchair access attributes and payment options in Google Business settings."
+        },
+        {
+          "key": "verification_and_reviews",
+          "category": "Reputation & Growth",
+          "title": "Google Verification & Review Link",
+          "description": "Complete Google verification and generate your 5-star review shortcut link for patient feedback.",
+          "is_completed": false,
+          "priority": "high",
+          "current_value": "Not Verified / Setup Incomplete",
+          "recommendation": "Complete Google verification (video or postcard) and save your Google review shortcut link."
+        }
+      ],
+      "next_priorities": [
+        {
+          "key": "clinic_photos",
+          "title": "High-Quality Clinic Photos (Min. 5)",
+          "action": "Upload at least 5 photos: exterior with street view, reception desk, consultation room, and team portrait."
+        },
+        {
+          "key": "verification_and_reviews",
+          "title": "Google Verification & Review Link",
+          "action": "Complete Google verification (video or postcard) and save your Google review shortcut link."
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 3,
+    "step": "3.2 List Google Patient Reviews",
+    "method": "GET",
+    "url": "/api/gbp/reviews/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "total_reviews": 1,
+      "average_rating": 5.0,
+      "reviews": [
+        {
+          "id": "d0579115-a3ee-4b21-9a8e-10f16bfa8655",
+          "review_id": "g_rev_106038",
+          "reviewer_name": "Rohan Deshmukh",
+          "reviewer_photo_url": "",
+          "star_rating": 5,
+          "comment": "Dr. Aditi Sharma is wonderful! My acne cleared up completely within 6 weeks. Very polite staff.",
+          "review_timestamp": "2026-10-29T04:53:18.962725Z",
+          "reply_text": "",
+          "replied_at": null,
+          "is_replied": false,
+          "ai_suggested_reply": "",
+          "created_at": "2026-10-29T04:53:18.963211Z"
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 3,
+    "step": "3.3 AI Empathetic Reply Generation",
+    "method": "POST",
+    "url": "/api/gbp/reviews/d0579115-a3ee-4b21-9a8e-10f16bfa8655/generate-reply/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "review_id": "d0579115-a3ee-4b21-9a8e-10f16bfa8655",
+      "reviewer_name": "Rohan Deshmukh",
+      "star_rating": 5,
+      "ai_suggested_reply": "Thank you so much for your kind words, Rohan! Our entire clinical team at Arogya Skin Clinic 106038 is thrilled to hear about your positive experience. We are committed to gentle, high-quality care. Wishing you great health and a wonderful smile!",
+      "compliance_note": "HIPAA & privacy compliant draft. Do not include specific diagnosis or treatment details."
+    },
+    "notes": ""
+  },
+  {
+    "phase": 3,
+    "step": "3.4 Publish Review Reply to Google",
+    "method": "POST",
+    "url": "/api/gbp/reviews/d0579115-a3ee-4b21-9a8e-10f16bfa8655/reply/",
+    "request_body": {
+      "reply_text": "Thank you so much for your kind words, Rohan! Our entire clinical team at Arogya Skin Clinic 106038 is thrilled to hear about your positive experience. We are committed to gentle, high-quality care. Wishing you great health and a wonderful smile!"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "d0579115-a3ee-4b21-9a8e-10f16bfa8655",
+      "review_id": "g_rev_106038",
+      "reviewer_name": "Rohan Deshmukh",
+      "reviewer_photo_url": "",
+      "star_rating": 5,
+      "comment": "Dr. Aditi Sharma is wonderful! My acne cleared up completely within 6 weeks. Very polite staff.",
+      "review_timestamp": "2026-10-29T04:53:18.962725Z",
+      "reply_text": "Thank you so much for your kind words, Rohan! Our entire clinical team at Arogya Skin Clinic 106038 is thrilled to hear about your positive experience. We are committed to gentle, high-quality care. Wishing you great health and a wonderful smile!",
+      "replied_at": "2026-10-29T04:53:19.023031Z",
+      "is_replied": true,
+      "ai_suggested_reply": "Thank you so much for your kind words, Rohan! Our entire clinical team at Arogya Skin Clinic 106038 is thrilled to hear about your positive experience. We are committed to gentle, high-quality care. Wishing you great health and a wonderful smile!",
+      "created_at": "2026-10-29T04:53:18.963211Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 3,
+    "step": "3.5 Local SEO 3-Pack Rank Audit Check",
+    "method": "POST",
+    "url": "/api/gbp/rank-tracking/check/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "status": "success",
+      "keywords_checked": 1,
+      "snapshots": [
+        {
+          "id": "41bb69a5-41e8-48c1-9552-acec32454c76",
+          "keyword": "2072880b-af1a-45ac-b114-ec155e899977",
+          "keyword_text": "dermatologist in bandra",
+          "check_date": "2026-10-29",
+          "pack_rank_position": 1,
+          "in_three_pack": true,
+          "organic_rank_position": 3,
+          "competitors_in_pack": [
+            "Apex Dental Indiranagar",
+            "Dr. Smile Polyclinic",
+            "Care Dental Hub"
+          ],
+          "rank_change": 0,
+          "created_at": "2026-10-29T04:53:19.059192Z"
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 4,
+    "step": "4.1 Public Website Visit Tracking",
+    "method": "POST",
+    "url": "/api/analytics/public/arogya-skin-clinic-106038-386b2a6b/visit/",
+    "request_body": {
+      "page_url": "https://arogya106038.clinicrise.com/services/acne-treatment",
+      "referrer": "https://www.google.com/",
+      "utm_source": "google",
+      "utm_medium": "cpc",
+      "utm_campaign": "skin_acne_promo",
+      "device_type": "mobile",
+      "visitor_id": "v_106038"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "visit_id": "0e058edb-5bfe-4df9-9866-ce229fccafce",
+      "traffic_channel": "paid_ad",
+      "traffic_source": "google",
+      "is_unique_daily": true,
+      "message": "Website visit tracked successfully."
+    },
+    "notes": ""
+  },
+  {
+    "phase": 4,
+    "step": "4.2 Track Public WhatsApp Click Event",
+    "method": "POST",
+    "url": "/api/leads/public/arogya-skin-clinic-106038-386b2a6b/click-event/",
+    "request_body": {
+      "event_type": "whatsapp_click",
+      "page_url": "https://arogya106038.clinicrise.com/",
+      "device_type": "mobile",
+      "visitor_id": "v_106038"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "event_id": "5ec18b68-8c64-42fa-bce7-76b1b57da59e",
+      "event_type": "whatsapp_click",
+      "lead_id": null,
+      "message": "Click event recorded successfully."
+    },
+    "notes": ""
+  },
+  {
+    "phase": 4,
+    "step": "4.3 Public Patient Inquiry Form",
+    "method": "POST",
+    "url": "/api/leads/public/arogya-skin-clinic-106038-386b2a6b/inquire/",
+    "request_body": {
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "service_requested": "Acne & Scar Laser Treatment",
+      "preferred_date": "2026-10-29",
+      "preferred_time_slot": "Evening (5 PM - 8 PM)",
+      "message": "Suffering from hormonal acne breakouts for 6 months. Would like consultation with Dr. Aditi.",
+      "consent_given": true,
+      "whatsapp_opt_in": true,
+      "utm_source": "google",
+      "utm_campaign": "skin_acne_promo"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Thank you! Your enquiry has been received by Arogya Skin Clinic 106038. A representative will contact you shortly.",
+      "lead_id": "3ba46f26-fddd-4105-b22f-6a4ff9dd13eb",
+      "clinic_name": "Arogya Skin Clinic 106038",
+      "consent_recorded": true
+    },
+    "notes": ""
+  },
+  {
+    "phase": 4,
+    "step": "4.4 Clinic Staff CRM Lead Inbox",
+    "method": "GET",
+    "url": "/api/leads/inbox/?status=new",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": [
+      {
+        "id": "3ba46f26-fddd-4105-b22f-6a4ff9dd13eb",
+        "patient_name": "Pooja Verma",
+        "phone_number": "+919886445915",
+        "email": "pooja_106038@example.com",
+        "preferred_date": "2026-10-29",
+        "preferred_time_slot": "Evening (5 PM - 8 PM)",
+        "service_requested": "Acne & Scar Laser Treatment",
+        "doctor_requested": "",
+        "message": "Suffering from hormonal acne breakouts for 6 months. Would like consultation with Dr. Aditi.",
+        "status": "new",
+        "status_display": "New / Uncontacted",
+        "priority": "medium",
+        "priority_display": "Medium",
+        "source": "website_form",
+        "source_display": "Website Enquiry Form",
+        "is_read": false,
+        "assigned_to": null,
+        "assigned_to_name": null,
+        "last_contacted_at": null,
+        "follow_up_date": null,
+        "activities_count": 1,
+        "consent_given": true,
+        "whatsapp_opt_in": true,
+        "call_opt_in": true,
+        "sms_opt_in": true,
+        "email_opt_in": true,
+        "consent_withdrawn": false,
+        "created_at": "2026-10-29T04:53:19.120528Z",
+        "updated_at": "2026-10-29T04:53:19.120565Z"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "phase": 4,
+    "step": "4.5 Lead Pipeline Status Transition",
+    "method": "POST",
+    "url": "/api/leads/3ba46f26-fddd-4105-b22f-6a4ff9dd13eb/status/",
+    "request_body": {
+      "status": "contacted",
+      "note": "Spoke with Pooja. Confirmed appointment preference for Saturday with Dr. Aditi."
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "3ba46f26-fddd-4105-b22f-6a4ff9dd13eb",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "preferred_date": "2026-10-29",
+      "preferred_time_slot": "Evening (5 PM - 8 PM)",
+      "service_requested": "Acne & Scar Laser Treatment",
+      "doctor_requested": "",
+      "message": "Suffering from hormonal acne breakouts for 6 months. Would like consultation with Dr. Aditi.",
+      "status": "contacted",
+      "status_display": "Contacted",
+      "priority": "medium",
+      "priority_display": "Medium",
+      "source": "website_form",
+      "source_display": "Website Enquiry Form",
+      "is_read": false,
+      "assigned_to": null,
+      "assigned_to_name": null,
+      "last_contacted_at": "2026-10-29T04:53:19.308346Z",
+      "follow_up_date": null,
+      "activities_count": 2,
+      "consent_given": true,
+      "whatsapp_opt_in": true,
+      "call_opt_in": true,
+      "sms_opt_in": true,
+      "email_opt_in": true,
+      "consent_withdrawn": false,
+      "created_at": "2026-10-29T04:53:19.120528Z",
+      "updated_at": "2026-10-29T04:53:19.308561Z",
+      "source_url": "",
+      "referrer": "",
+      "utm_source": "google",
+      "utm_medium": "",
+      "utm_campaign": "skin_acne_promo",
+      "utm_term": "",
+      "utm_content": "",
+      "device_type": "",
+      "ip_address": "127.0.0.1",
+      "user_agent": "",
+      "consent_text": "I agree to receive communications regarding my enquiry via Phone, WhatsApp, SMS and Email from Arogya Skin Clinic 106038 and the healthcare team.",
+      "consent_timestamp": "2026-10-29T04:53:19.119792Z",
+      "consent_ip_address": "127.0.0.1",
+      "consent_withdrawn_at": null,
+      "consent_withdrawn_reason": "",
+      "lost_reason": "",
+      "activities": [
+        {
+          "id": "bbdc14aa-34f9-4338-987d-3a6bad560286",
+          "activity_type": "status_change",
+          "activity_type_display": "Status Changed",
+          "performed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "performed_by_name": "Aditi Sharma",
+          "previous_status": "new",
+          "new_status": "contacted",
+          "note": "Spoke with Pooja. Confirmed appointment preference for Saturday with Dr. Aditi.",
+          "metadata": {
+            "lost_reason": "",
+            "follow_up_date": null
+          },
+          "created_at": "2026-10-29T04:53:19.320165Z"
+        },
+        {
+          "id": "df328d12-beb0-438c-b124-59c3075f5819",
+          "activity_type": "status_change",
+          "activity_type_display": "Status Changed",
+          "performed_by": null,
+          "performed_by_name": "System / Public",
+          "previous_status": "",
+          "new_status": "new",
+          "note": "Enquiry form submitted by Pooja Verma via Arogya Skin Clinic 106038.",
+          "metadata": {
+            "ip_address": "127.0.0.1",
+            "preferred_date": "2026-10-29",
+            "service": "Acne & Scar Laser Treatment"
+          },
+          "created_at": "2026-10-29T04:53:19.129622Z"
+        }
+      ],
+      "click_events": []
+    },
+    "notes": ""
+  },
+  {
+    "phase": 5,
+    "step": "5.1 Realtime Doctor Availability Check",
+    "method": "GET",
+    "url": "/api/bookings/public/arogya-skin-clinic-106038-386b2a6b/availability/?doctor_id=63d10563-c67e-45f3-9046-b70c6d9c3f3d&date=2026-10-29",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "date": "2026-10-29",
+      "is_available": false,
+      "reason": "No working schedule on Thursday.",
+      "sessions": [],
+      "time_slots": []
+    },
+    "notes": ""
+  },
+  {
+    "phase": 5,
+    "step": "5.2 Public Booking Request Submission",
+    "method": "POST",
+    "url": "/api/bookings/public/arogya-skin-clinic-106038-386b2a6b/request/",
+    "request_body": {
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "gender": "female",
+      "age": 28,
+      "consultation_mode": "in_person",
+      "preferred_date": "2026-10-29",
+      "preferred_time_window": "evening",
+      "booking_mode": "slot",
+      "session_name": "Evening Clinic",
+      "start_time": "17:20:00",
+      "chief_complaint": "Severe facial acne breakouts and post-inflammatory pigmentation.",
+      "consent_given": true
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "message": "Booking request received! Your reference is CR-202610-1CMT. The clinic will confirm your appointment shortly.",
+      "booking_reference": "CR-202610-1CMT",
+      "status": "requested",
+      "status_display": "Pending Clinic Confirmation",
+      "booking_mode": "slot",
+      "appointment_date": "2026-10-29",
+      "token_number": null,
+      "start_time": "17:20",
+      "clinic_name": "Arogya Skin Clinic 106038"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 5,
+    "step": "5.3 Public Booking Tracking by Reference",
+    "method": "GET",
+    "url": "/api/bookings/public/arogya-skin-clinic-106038-386b2a6b/track/CR-202610-1CMT/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "869d96eb-e5fd-4e9a-bdee-cc324effcb22",
+      "booking_reference": "CR-202610-1CMT",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "location": null,
+      "location_name": null,
+      "doctor": null,
+      "doctor_name": null,
+      "service": null,
+      "service_name": null,
+      "consultation_mode": "in_person",
+      "consultation_mode_display": "In-Person Clinic Visit",
+      "preferred_date": "2026-10-29",
+      "preferred_time_window": "evening",
+      "preferred_time_window_display": "Evening (4:00 PM - 8:00 PM)",
+      "chief_complaint": "Severe facial acne breakouts and post-inflammatory pigmentation.",
+      "patient_notes": "",
+      "booking_mode": "slot",
+      "booking_mode_display": "Exact Time Slot",
+      "appointment_date": "2026-10-29",
+      "session_name": "Evening Clinic",
+      "token_number": null,
+      "start_time": "17:20:00",
+      "end_time": null,
+      "status": "requested",
+      "status_display": "Pending Clinic Confirmation",
+      "confirmed_at": null,
+      "source": "website",
+      "created_at": "2026-10-29T04:53:19.362076Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 5,
+    "step": "5.4 Clinic Confirmation Workflow",
+    "method": "POST",
+    "url": "/api/bookings/869d96eb-e5fd-4e9a-bdee-cc324effcb22/confirm/",
+    "request_body": {
+      "confirmed_date": "2026-10-29",
+      "start_time": "17:20:00",
+      "end_time": "17:40:00",
+      "session_name": "Evening Clinic",
+      "token_number": 4,
+      "clinic_notes": "Confirmed over phone. Advised to bring previous dermatological prescriptions."
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "869d96eb-e5fd-4e9a-bdee-cc324effcb22",
+      "booking_reference": "CR-202610-1CMT",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "location": null,
+      "location_name": null,
+      "doctor": null,
+      "doctor_name": null,
+      "service": null,
+      "service_name": null,
+      "consultation_mode": "in_person",
+      "consultation_mode_display": "In-Person Clinic Visit",
+      "preferred_date": "2026-10-29",
+      "preferred_time_window": "evening",
+      "preferred_time_window_display": "Evening (4:00 PM - 8:00 PM)",
+      "chief_complaint": "Severe facial acne breakouts and post-inflammatory pigmentation.",
+      "patient_notes": "",
+      "booking_mode": "slot",
+      "booking_mode_display": "Exact Time Slot",
+      "appointment_date": "2026-10-29",
+      "session_name": "Evening Clinic",
+      "token_number": null,
+      "start_time": "17:20:00",
+      "end_time": "17:40:00",
+      "status": "confirmed",
+      "status_display": "Confirmed",
+      "confirmed_at": "2026-10-29T04:53:19.441818Z",
+      "source": "website",
+      "created_at": "2026-10-29T04:53:19.362076Z",
+      "gender": "female",
+      "age": 28,
+      "date_of_birth": null,
+      "patient_type": "new",
+      "clinic_notes": "Confirmed over phone. Advised to bring previous dermatological prescriptions.",
+      "rejection_reason": "",
+      "cancellation_reason": "",
+      "cancelled_at": null,
+      "confirmed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "confirmed_by_name": "Aditi Sharma",
+      "consent_given": true,
+      "consent_timestamp": "2026-10-29T04:53:19.361268Z",
+      "timeline": [
+        {
+          "id": "88f26e7b-9e35-4c75-80e5-862234f1ea32",
+          "action": "confirmed",
+          "performed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "performed_by_name": "Aditi Sharma",
+          "note": "Booking confirmed by Aditi Sharma. Slot 17:20:00 on 2026-10-29.",
+          "metadata": {},
+          "created_at": "2026-10-29T04:53:19.467430Z"
+        },
+        {
+          "id": "e789e596-9e49-4697-abac-27a1dfa2b38b",
+          "action": "requested",
+          "performed_by": null,
+          "performed_by_name": "System / Patient",
+          "note": "Booking request created via Clinic Website. Mode: Exact Time Slot. ",
+          "metadata": {},
+          "created_at": "2026-10-29T04:53:19.373255Z"
+        }
+      ],
+      "lead": "29046ed3-fd62-4699-b562-e03992f7fef7"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 5,
+    "step": "5.5 Patient Visit Status Lifecycle",
+    "method": "POST",
+    "url": "/api/bookings/869d96eb-e5fd-4e9a-bdee-cc324effcb22/visit-status/",
+    "request_body": {
+      "status": "in_consultation",
+      "notes": "Patient checked in. Vitals recorded. Entering Doctor chamber."
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "869d96eb-e5fd-4e9a-bdee-cc324effcb22",
+      "booking_reference": "CR-202610-1CMT",
+      "patient_name": "Pooja Verma",
+      "phone_number": "+919886445915",
+      "email": "pooja_106038@example.com",
+      "location": null,
+      "location_name": null,
+      "doctor": null,
+      "doctor_name": null,
+      "service": null,
+      "service_name": null,
+      "consultation_mode": "in_person",
+      "consultation_mode_display": "In-Person Clinic Visit",
+      "preferred_date": "2026-10-29",
+      "preferred_time_window": "evening",
+      "preferred_time_window_display": "Evening (4:00 PM - 8:00 PM)",
+      "chief_complaint": "Severe facial acne breakouts and post-inflammatory pigmentation.",
+      "patient_notes": "",
+      "booking_mode": "slot",
+      "booking_mode_display": "Exact Time Slot",
+      "appointment_date": "2026-10-29",
+      "session_name": "Evening Clinic",
+      "token_number": null,
+      "start_time": "17:20:00",
+      "end_time": "17:40:00",
+      "status": "in_consultation",
+      "status_display": "In Consultation Room",
+      "confirmed_at": "2026-10-29T04:53:19.441818Z",
+      "source": "website",
+      "created_at": "2026-10-29T04:53:19.362076Z",
+      "gender": "female",
+      "age": 28,
+      "date_of_birth": null,
+      "patient_type": "new",
+      "clinic_notes": "Confirmed over phone. Advised to bring previous dermatological prescriptions.\nPatient checked in. Vitals recorded. Entering Doctor chamber.",
+      "rejection_reason": "",
+      "cancellation_reason": "",
+      "cancelled_at": null,
+      "confirmed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "confirmed_by_name": "Aditi Sharma",
+      "consent_given": true,
+      "consent_timestamp": "2026-10-29T04:53:19.361268Z",
+      "timeline": [
+        {
+          "id": "1b9a3c68-d057-481c-a390-55b1e21b4c6d",
+          "action": "in_consultation",
+          "performed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "performed_by_name": "Aditi Sharma",
+          "note": "Patient checked in. Vitals recorded. Entering Doctor chamber.",
+          "metadata": {},
+          "created_at": "2026-10-29T04:53:19.579134Z"
+        },
+        {
+          "id": "88f26e7b-9e35-4c75-80e5-862234f1ea32",
+          "action": "confirmed",
+          "performed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "performed_by_name": "Aditi Sharma",
+          "note": "Booking confirmed by Aditi Sharma. Slot 17:20:00 on 2026-10-29.",
+          "metadata": {},
+          "created_at": "2026-10-29T04:53:19.467430Z"
+        },
+        {
+          "id": "e789e596-9e49-4697-abac-27a1dfa2b38b",
+          "action": "requested",
+          "performed_by": null,
+          "performed_by_name": "System / Patient",
+          "note": "Booking request created via Clinic Website. Mode: Exact Time Slot. ",
+          "metadata": {},
+          "created_at": "2026-10-29T04:53:19.373255Z"
+        }
+      ],
+      "lead": "29046ed3-fd62-4699-b562-e03992f7fef7"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 6,
+    "step": "6.1 Convert Lead to Permanent Patient Chart",
+    "method": "POST",
+    "url": "/api/patients/convert-lead/3ba46f26-fddd-4105-b22f-6a4ff9dd13eb/",
+    "request_body": {},
+    "status_code": 201,
+    "expected_statuses": [
+      200,
+      201
+    ],
+    "passed": true,
+    "response": {
+      "status": "success",
+      "message": "Lead converted into registered patient Pooja Verma (CR-P-202610-5MQ1).",
+      "patient": {
+        "id": "bc6a6d27-2373-45d1-8218-eca989f633ab",
+        "patient_id": "CR-P-202610-5MQ1",
+        "first_name": "Pooja",
+        "last_name": "Verma",
+        "full_name": "Pooja Verma",
+        "phone_number": "+919886445915",
+        "email": "pooja_106038@example.com",
+        "gender": "female",
+        "gender_display": "Female",
+        "date_of_birth": null,
+        "age": null,
+        "blood_group": "unknown",
+        "address": "",
+        "city": "",
+        "postal_code": "",
+        "emergency_contact_name": "",
+        "emergency_contact_phone": "",
+        "emergency_contact_relation": "",
+        "allergies": "",
+        "chronic_conditions": [],
+        "medical_alerts": "",
+        "tags": [],
+        "status": "active",
+        "status_display": "Active Patient",
+        "source": "website_booking",
+        "source_display": "Website Booking Request",
+        "primary_doctor": null,
+        "total_visits_count": 0,
+        "last_visit_date": null,
+        "preferred_language": "English",
+        "whatsapp_opt_in": true,
+        "sms_opt_in": true,
+        "call_opt_in": true,
+        "email_opt_in": true,
+        "pinned_notes": [],
+        "latest_vitals": null,
+        "pending_followups_count": 0,
+        "created_at": "2026-10-29T04:53:19.480288Z",
+        "updated_at": "2026-10-29T04:53:19.622443Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 6,
+    "step": "6.2 Record Patient Vitals",
+    "method": "POST",
+    "url": "/api/patients/bc6a6d27-2373-45d1-8218-eca989f633ab/vitals/",
+    "request_body": {
+      "blood_pressure_systolic": 118,
+      "blood_pressure_diastolic": 76,
+      "pulse_bpm": 74,
+      "temperature_fahrenheit": 98.4,
+      "oxygen_saturation_spo2": 99,
+      "weight_kg": 56.5,
+      "height_cm": 164.0,
+      "notes": "Normal baseline vitals before laser procedure."
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "25f48887-863e-463d-98c7-eb29973d5cce",
+      "patient": "bc6a6d27-2373-45d1-8218-eca989f633ab",
+      "recorded_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "recorded_by_name": "Aditi Sharma",
+      "booking": null,
+      "blood_pressure_systolic": 118,
+      "blood_pressure_diastolic": 76,
+      "pulse_bpm": 74,
+      "temperature_fahrenheit": "98.4",
+      "oxygen_saturation_spo2": 99,
+      "respiratory_rate": null,
+      "weight_kg": "56.50",
+      "height_cm": "164.0",
+      "bmi": "21.0",
+      "blood_sugar_fasting": null,
+      "blood_sugar_random": null,
+      "notes": "Normal baseline vitals before laser procedure.",
+      "created_at": "2026-10-29T04:53:19.677314Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 6,
+    "step": "6.3 Clinical Doctor Notes & Pinned Alerts",
+    "method": "POST",
+    "url": "/api/patients/bc6a6d27-2373-45d1-8218-eca989f633ab/notes/",
+    "request_body": {
+      "category": "clinical",
+      "note": "Diagnosis: Grade 3 Inflammatory Acne Vulgaris. Plan: Start Clindamycin gel morning, Adapalene 0.1% bedtime. CAUTION: Patient allergic to Benzoyl Peroxide.",
+      "is_pinned": true
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "cea636a2-908a-46be-8164-3190819d1c8f",
+      "patient": "bc6a6d27-2373-45d1-8218-eca989f633ab",
+      "author": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "author_name": "Aditi Sharma",
+      "author_role": "owner",
+      "category": "clinical",
+      "category_display": "clinical",
+      "note": "Diagnosis: Grade 3 Inflammatory Acne Vulgaris. Plan: Start Clindamycin gel morning, Adapalene 0.1% bedtime. CAUTION: Patient allergic to Benzoyl Peroxide.",
+      "is_pinned": true,
+      "pinned_at": "2026-10-29T04:53:19.703710Z",
+      "pinned_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "pinned_by_name": "Aditi Sharma",
+      "created_at": "2026-10-29T04:53:19.704221Z",
+      "updated_at": "2026-10-29T04:53:19.704256Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 6,
+    "step": "6.4 Schedule Follow-up / Recall Task",
+    "method": "POST",
+    "url": "/api/patients/bc6a6d27-2373-45d1-8218-eca989f633ab/follow-ups/",
+    "request_body": {
+      "follow_up_type": "clinical_review",
+      "priority": "medium",
+      "due_date": "2026-11-12",
+      "title": "2-Week Acne Therapy Progress Review",
+      "instructions": "Call patient to assess tolerance of topical Adapalene."
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "03839dc3-08e7-482c-8cb2-803b59d05268",
+      "patient": "bc6a6d27-2373-45d1-8218-eca989f633ab",
+      "patient_name": "Pooja Verma",
+      "patient_phone": "+919886445915",
+      "booking": null,
+      "created_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "created_by_name": "Aditi Sharma",
+      "assigned_to": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "assigned_to_name": "Aditi Sharma",
+      "follow_up_type": "clinical_review",
+      "follow_up_type_display": "clinical_review",
+      "priority": "medium",
+      "priority_display": "Medium Priority",
+      "due_date": "2026-11-12T00:00:00Z",
+      "status": "pending",
+      "status_display": "Pending",
+      "title": "2-Week Acne Therapy Progress Review",
+      "instructions": "Call patient to assess tolerance of topical Adapalene.",
+      "outcome_notes": "",
+      "completed_at": null,
+      "completed_by": null,
+      "created_at": "2026-10-29T04:53:19.732409Z",
+      "updated_at": "2026-10-29T04:53:19.732444Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 6,
+    "step": "6.5 Complete Follow-up Task",
+    "method": "POST",
+    "url": "/api/patients/follow-ups/03839dc3-08e7-482c-8cb2-803b59d05268/complete/",
+    "request_body": {
+      "outcome_notes": "Spoke with Pooja. Skin adapting well with no redness. Booked peel for Saturday."
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "id": "03839dc3-08e7-482c-8cb2-803b59d05268",
+      "patient": "bc6a6d27-2373-45d1-8218-eca989f633ab",
+      "patient_name": "Pooja Verma",
+      "patient_phone": "+919886445915",
+      "booking": null,
+      "created_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "created_by_name": "Aditi Sharma",
+      "assigned_to": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "assigned_to_name": "Aditi Sharma",
+      "follow_up_type": "clinical_review",
+      "follow_up_type_display": "clinical_review",
+      "priority": "medium",
+      "priority_display": "Medium Priority",
+      "due_date": "2026-11-12T00:00:00Z",
+      "status": "completed",
+      "status_display": "Completed",
+      "title": "2-Week Acne Therapy Progress Review",
+      "instructions": "Call patient to assess tolerance of topical Adapalene.",
+      "outcome_notes": "Spoke with Pooja. Skin adapting well with no redness. Booked peel for Saturday.",
+      "completed_at": "2026-10-29T04:53:19.760103Z",
+      "completed_by": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "completed_by_name": "Aditi Sharma",
+      "created_at": "2026-10-29T04:53:19.732409Z",
+      "updated_at": "2026-10-29T04:53:19.760264Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 7,
+    "step": "7.1 WhatsApp Gateway Configuration",
+    "method": "PUT",
+    "url": "/api/whatsapp/config/",
+    "request_body": {
+      "phone_number_id": "10098106038",
+      "waba_id": "99881106038",
+      "access_token": "EAAQ3ZCZB_mock_token_12345",
+      "display_phone_number": "+919856925418",
+      "business_name": "Arogya Skin Clinic",
+      "is_enabled": true,
+      "auto_confirmation_enabled": true,
+      "auto_reminders_enabled": true,
+      "post_visit_review_enabled": true
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200,
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "ce7a739f-9dfe-49b3-8c2f-e0a21234db6d",
+      "provider": "mock_simulator",
+      "phone_number_id": "10098106038",
+      "waba_id": "99881106038",
+      "masked_access_token": "EAAQ3Z\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u20222345",
+      "webhook_verify_token": "cr_wh_e5393a39a6f74cad",
+      "display_phone_number": "+919856925418",
+      "business_name": "Arogya Skin Clinic",
+      "is_enabled": true,
+      "auto_confirmation_enabled": true,
+      "auto_reminders_enabled": true,
+      "lead_auto_reply_enabled": true,
+      "post_visit_review_enabled": true,
+      "daily_send_limit": 1000,
+      "created_at": "2026-10-29T04:53:19.139608Z",
+      "updated_at": "2026-10-29T04:53:19.797736Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 7,
+    "step": "7.2 Seed Default Clinical Templates",
+    "method": "POST",
+    "url": "/api/whatsapp/templates/seed-defaults/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200,
+      201
+    ],
+    "passed": true,
+    "response": {
+      "message": "Successfully seeded default templates (0 new created).",
+      "created_count": 0
+    },
+    "notes": ""
+  },
+  {
+    "phase": 7,
+    "step": "7.3 Instant Test Send WhatsApp Message",
+    "method": "POST",
+    "url": "/api/whatsapp/test-send/",
+    "request_body": {
+      "recipient_phone": "+919886445915",
+      "template_name": "booking_confirmation"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "message": "Test message dispatched to +919886445915.",
+      "log": {
+        "id": "59e153d9-e43f-442b-b956-ec69aaecb22a",
+        "message_id": "msg_c943f2a3b22f4e6897f06219242b0fb0",
+        "provider_message_id": "wamid.mock_bda57823de1b4589",
+        "direction": "outbound",
+        "direction_display": "Outbound (Sent to Patient)",
+        "recipient_phone": "+919886445915",
+        "recipient_name": "Test Staff / Patient",
+        "sender_phone": "+919856925418",
+        "template": null,
+        "template_name": "booking_confirmation",
+        "message_body": "Notice from Arogya Skin Clinic 106038: patient_name: Meera Nambiar, doctor_name: Dr. Rajesh Sharma, MD, appointment_date: 2026-10-28, start_time: 10:30 AM, session_name: Morning General OPD, token_number: 14, estimated_arrival: 10:15 AM, time_or_token: 10:30 AM (Token #14), clinic_name: Arogya Skin Clinic 106038, clinic_address: Road No 36, Jubilee Hills, Hyderabad, clinic_phone: +919876543210, booking_reference: CR-202610-8F9A, service_requested: Dental Cleaning & Consultation, cancellation_reason: Patient requested cancellation due to travel, maps_link: https://maps.google.com/?q=Apollo+Dental+Hyderabad, queue_url: https://clinicrise.com/queue/CR-202610-8F9A, booking_url: https://clinicrise.com/book, clinic_url: https://clinicrise.com, google_review_url: https://search.google.com/local/writereview?placeid=ChIJ_sample",
+        "parameters": {
+          "patient_name": "Meera Nambiar",
+          "doctor_name": "Dr. Rajesh Sharma, MD",
+          "appointment_date": "2026-10-28",
+          "start_time": "10:30 AM",
+          "session_name": "Morning General OPD",
+          "token_number": "14",
+          "estimated_arrival": "10:15 AM",
+          "time_or_token": "10:30 AM (Token #14)",
+          "clinic_name": "Arogya Skin Clinic 106038",
+          "clinic_address": "Road No 36, Jubilee Hills, Hyderabad",
+          "clinic_phone": "+919876543210",
+          "booking_reference": "CR-202610-8F9A",
+          "service_requested": "Dental Cleaning & Consultation",
+          "cancellation_reason": "Patient requested cancellation due to travel",
+          "maps_link": "https://maps.google.com/?q=Apollo+Dental+Hyderabad",
+          "queue_url": "https://clinicrise.com/queue/CR-202610-8F9A",
+          "booking_url": "https://clinicrise.com/book",
+          "clinic_url": "https://clinicrise.com",
+          "google_review_url": "https://search.google.com/local/writereview?placeid=ChIJ_sample"
+        },
+        "status": "sent",
+        "status_display": "Sent by Gateway",
+        "booking": null,
+        "booking_reference": null,
+        "lead": null,
+        "reminder": null,
+        "error_code": "",
+        "error_message": "",
+        "cost_tier": "utility",
+        "sent_at": "2026-10-29T04:53:19.901955Z",
+        "delivered_at": null,
+        "read_at": null,
+        "failed_at": null,
+        "created_at": "2026-10-29T04:53:19.902360Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 7,
+    "step": "7.4 Process Queued Automated Reminders",
+    "method": "POST",
+    "url": "/api/whatsapp/reminders/process-now/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "message": "Reminder processing complete.",
+      "stats": {
+        "processed": 0,
+        "sent": 0,
+        "cancelled": 0,
+        "skipped_opt_out": 0,
+        "failed": 0
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 7,
+    "step": "7.5 Patient Consent Opt-Out Check",
+    "method": "GET",
+    "url": "/api/whatsapp/opt-outs/check/?phone=+919886445915",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "phone_number": "+919886445915",
+      "is_opted_out": false,
+      "can_receive_messages": true,
+      "opt_out_record": null
+    },
+    "notes": ""
+  },
+  {
+    "phase": 8,
+    "step": "8.1 Subscription Plans Catalog",
+    "method": "GET",
+    "url": "/api/billing/plans/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": [
+      {
+        "id": "45824c7e-affa-416a-94c1-7957cab13988",
+        "name": "Growth Polyclinic",
+        "slug": "growth-polyclinic-320412",
+        "tier": "growth",
+        "tier_display": "Growth Polyclinic",
+        "tagline": "",
+        "description": "",
+        "monthly_price": "2999.00",
+        "yearly_price": "29990.00",
+        "yearly_discount_percent": 15,
+        "currency": "INR",
+        "trial_days": 0,
+        "max_doctors": 5,
+        "max_staff": 10,
+        "max_locations": 1,
+        "max_appointments_per_month": 200,
+        "max_storage_mb": 1024,
+        "custom_domain_enabled": false,
+        "teleconsultation_enabled": false,
+        "sms_reminders_enabled": false,
+        "whatsapp_notifications_enabled": false,
+        "prescription_builder_enabled": true,
+        "analytics_reports_enabled": false,
+        "priority_support": false,
+        "api_access_enabled": false,
+        "features_list": [],
+        "is_active": true,
+        "is_public": true,
+        "is_default_trial": false,
+        "sort_order": 0,
+        "created_at": "2026-10-29T04:51:24.709938Z"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "phase": 8,
+    "step": "8.2 Current Usage Summary",
+    "method": "GET",
+    "url": "/api/billing/usage/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "plan_name": "14-Day Free Trial",
+      "tier": "trial",
+      "status": "trialing",
+      "days_remaining": 13,
+      "usage": {
+        "doctors": {
+          "used": 1,
+          "limit": 1,
+          "is_unlimited": false,
+          "remaining": 0
+        },
+        "staff": {
+          "used": 1,
+          "limit": 2,
+          "is_unlimited": false,
+          "remaining": 1
+        },
+        "locations": {
+          "used": 0,
+          "limit": 1,
+          "is_unlimited": false,
+          "remaining": 1
+        },
+        "appointments_this_month": {
+          "used": 0,
+          "limit": 50,
+          "is_unlimited": false,
+          "remaining": 50
+        }
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 8,
+    "step": "8.3 Initiate Checkout Session",
+    "method": "POST",
+    "url": "/api/billing/checkout/",
+    "request_body": {
+      "plan_id": "45824c7e-affa-416a-94c1-7957cab13988",
+      "interval": "yearly"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "invoice_id": "beb40b69-4f79-484d-a65d-63cdc450bbb0",
+      "invoice_number": "CR-INV-202610-A9Q3",
+      "order_id": "order_mock_78ddb6d370324d",
+      "amount": 35388.2,
+      "currency": "INR",
+      "key_id": "rzp_test_placeholder",
+      "plan": {
+        "id": "45824c7e-affa-416a-94c1-7957cab13988",
+        "name": "Growth Polyclinic",
+        "tier": "growth",
+        "interval": "yearly"
+      },
+      "breakdown": {
+        "base_price": 29990.0,
+        "discount_credit": 0.0,
+        "subtotal": 29990.0,
+        "tax_rate_percent": 18.0,
+        "tax_amount": 5398.2,
+        "cgst_amount": 0.0,
+        "sgst_amount": 0.0,
+        "igst_amount": 5398.2,
+        "total_amount": 35388.2
+      },
+      "is_mock": true
+    },
+    "notes": ""
+  },
+  {
+    "phase": 8,
+    "step": "8.4 Verify Payment & Activate Plan",
+    "method": "POST",
+    "url": "/api/billing/verify-payment/",
+    "request_body": {
+      "invoice_id": "beb40b69-4f79-484d-a65d-63cdc450bbb0",
+      "razorpay_order_id": "order_mock_78ddb6d370324d",
+      "razorpay_payment_id": "pay_mock_106038",
+      "razorpay_signature": "mock_sig_106038"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "message": "Payment verified and subscription activated successfully.",
+      "invoice": {
+        "id": "beb40b69-4f79-484d-a65d-63cdc450bbb0",
+        "invoice_number": "CR-INV-202610-A9Q3",
+        "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "plan_snapshot_name": "Growth Polyclinic",
+        "billing_interval": "yearly",
+        "period_start": "2026-10-29T04:53:20.041736Z",
+        "period_end": "2027-10-29T04:53:20.041736Z",
+        "subtotal": "29990.00",
+        "discount_amount": "0.00",
+        "tax_rate_percent": "18.00",
+        "cgst_amount": "0.00",
+        "sgst_amount": "0.00",
+        "igst_amount": "5398.20",
+        "tax_amount": "5398.20",
+        "total_amount": "35388.20",
+        "currency": "INR",
+        "status": "paid",
+        "status_display": "Paid",
+        "is_paid": true,
+        "payment_gateway": "razorpay",
+        "gateway_order_id": "order_mock_78ddb6d370324d",
+        "gateway_payment_id": "pay_mock_106038",
+        "payment_method": "online",
+        "paid_at": "2026-10-29T04:53:20.041736Z",
+        "due_date": "2026-11-01T04:53:19.993828Z",
+        "line_items": [
+          {
+            "description": "ClinicRise Growth Polyclinic Subscription (Yearly)",
+            "period_desc": "29 Oct 2026 to 29 Oct 2027",
+            "sac_code": "998313",
+            "quantity": 1,
+            "unit_price": "29990.00",
+            "amount": "29990.00"
+          }
+        ],
+        "billing_party_details": {
+          "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+          "practice_name": "Arogya Skin Clinic 106038",
+          "gstin": "",
+          "email": "dr.aditi_106038@arogyaclinic.com",
+          "phone_number": "+919856925418",
+          "address": "Shop 4, Sunrise Heights, Linking Road, Bandra West",
+          "city": "Mumbai",
+          "state": "Maharashtra",
+          "postal_code": "400050",
+          "country": "India"
+        },
+        "issuer_party_details": {
+          "company_name": "ClinicRise Healthcare Technologies Pvt Ltd",
+          "gstin": "36AAAAA0000A1Z5",
+          "state": "Telangana",
+          "state_code": "36",
+          "address": "Plot 42, Silicon Valley, HITEC City, Madhapur, Hyderabad, Telangana - 500081, India",
+          "email": "billing@clinicrise.com",
+          "website": "https://clinicrise.com",
+          "sac_code": "998313"
+        },
+        "notes": "",
+        "receipt_url": "http://testserver/api/billing/invoices/beb40b69-4f79-484d-a65d-63cdc450bbb0/receipt/",
+        "created_at": "2026-10-29T04:53:19.995079Z",
+        "updated_at": "2026-10-29T04:53:20.041865Z"
+      },
+      "subscription": {
+        "id": "21b3feeb-d46d-4680-b00d-129ca489ae92",
+        "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+        "practice_name": "Arogya Skin Clinic 106038",
+        "plan": {
+          "id": "45824c7e-affa-416a-94c1-7957cab13988",
+          "name": "Growth Polyclinic",
+          "slug": "growth-polyclinic-320412",
+          "tier": "growth",
+          "tier_display": "Growth Polyclinic",
+          "tagline": "",
+          "description": "",
+          "monthly_price": "2999.00",
+          "yearly_price": "29990.00",
+          "yearly_discount_percent": 15,
+          "currency": "INR",
+          "trial_days": 0,
+          "max_doctors": 5,
+          "max_staff": 10,
+          "max_locations": 1,
+          "max_appointments_per_month": 200,
+          "max_storage_mb": 1024,
+          "custom_domain_enabled": false,
+          "teleconsultation_enabled": false,
+          "sms_reminders_enabled": false,
+          "whatsapp_notifications_enabled": false,
+          "prescription_builder_enabled": true,
+          "analytics_reports_enabled": false,
+          "priority_support": false,
+          "api_access_enabled": false,
+          "features_list": [],
+          "is_active": true,
+          "is_public": true,
+          "is_default_trial": false,
+          "sort_order": 0,
+          "created_at": "2026-10-29T04:51:24.709938Z"
+        },
+        "status": "active",
+        "status_display": "Active Paid",
+        "billing_interval": "yearly",
+        "billing_interval_display": "Yearly",
+        "current_period_start": "2026-10-29T04:53:20.041736Z",
+        "current_period_end": "2027-10-29T04:53:20.041736Z",
+        "trial_start": "2026-10-29T04:53:17.486224Z",
+        "trial_end": "2026-11-12T04:53:17.486224Z",
+        "is_in_trial": false,
+        "is_active_access": true,
+        "days_remaining": 364,
+        "auto_renew": true,
+        "cancel_at_period_end": false,
+        "cancelled_at": null,
+        "cancellation_reason": "",
+        "grace_period_ends_at": null,
+        "is_grace_period_active": false,
+        "scheduled_downgrade": null,
+        "payment_gateway": "razorpay",
+        "usage": {
+          "doctors": {
+            "used": 1,
+            "limit": 5,
+            "is_unlimited": false,
+            "remaining": 4
+          },
+          "staff": {
+            "used": 1,
+            "limit": 10,
+            "is_unlimited": false,
+            "remaining": 9
+          },
+          "locations": {
+            "used": 0,
+            "limit": 1,
+            "is_unlimited": false,
+            "remaining": 1
+          },
+          "appointments_this_month": {
+            "used": 0,
+            "limit": 200,
+            "is_unlimited": false,
+            "remaining": 200
+          }
+        },
+        "created_at": "2026-10-29T04:53:17.486854Z",
+        "updated_at": "2026-10-29T04:53:20.049673Z"
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 8,
+    "step": "8.5 Printable GST Tax Invoice HTML Receipt",
+    "method": "GET",
+    "url": "/api/billing/invoices/beb40b69-4f79-484d-a65d-63cdc450bbb0/receipt/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": "<HTML Document: 7421 bytes, Preview: <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Tax Invoice CR-INV-202610-A9Q3 - ClinicRise</title>\n    <style>\n        ...>",
+    "notes": ""
+  },
+  {
+    "phase": 9,
+    "step": "9.1 Practice Analytics Dashboard",
+    "method": "GET",
+    "url": "/api/analytics/dashboard/?period=30d",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "period": {
+        "preset": "30d",
+        "start": "2026-09-30T00:00:00+00:00",
+        "end": "2026-10-29T04:53:20.090367+00:00",
+        "days": 30
+      },
+      "summary": {
+        "website_visits": 1,
+        "unique_visitors": 1,
+        "pageviews_per_visitor": 1.0,
+        "calls": 0,
+        "whatsapp_clicks": 1,
+        "total_clicks": 1,
+        "enquiries": 2,
+        "unread_enquiries": 2,
+        "bookings": 1,
+        "confirmed_bookings": 0,
+        "completed_bookings": 0
+      },
+      "growth_vs_previous_period": {
+        "visits": 100.0,
+        "calls": 0.0,
+        "whatsapp_clicks": 100.0,
+        "enquiries": 100.0,
+        "bookings": 100.0
+      },
+      "traffic_sources": {
+        "channels": {
+          "organic_search": {
+            "name": "Organic Search (Google, Bing, Yahoo)",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "direct": {
+            "name": "Direct / Typed URL",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "social": {
+            "name": "Social Media (Instagram, Facebook, LinkedIn, YouTube)",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "paid_ad": {
+            "name": "Paid Ads / Search Ads / PPC",
+            "count": 1,
+            "percentage": 100.0
+          },
+          "whatsapp": {
+            "name": "WhatsApp Links & Chats",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "referral": {
+            "name": "Referral (External Websites)",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "email": {
+            "name": "Email Newsletter & Links",
+            "count": 0,
+            "percentage": 0.0
+          },
+          "campaign": {
+            "name": "Custom Ad Campaign",
+            "count": 0,
+            "percentage": 0.0
+          }
+        },
+        "top_sources": [
+          {
+            "source": "google",
+            "count": 1,
+            "percentage": 100.0
+          }
+        ],
+        "top_campaigns": [
+          {
+            "campaign": "skin_acne_promo",
+            "source": "google",
+            "count": 1
+          }
+        ],
+        "top_referrers": [
+          {
+            "domain": "www.google.com",
+            "count": 1
+          }
+        ]
+      },
+      "calls_and_whatsapp": {
+        "total_calls": 0,
+        "total_whatsapp_clicks": 1,
+        "total_booking_cta_clicks": 0,
+        "total_directions_clicks": 0,
+        "ratio_whatsapp_to_calls": 1
+      },
+      "enquiries": {
+        "total": 2,
+        "unread": 2,
+        "conversion_rate_percentage": 50.0,
+        "by_status": {
+          "appointment_scheduled": 1,
+          "converted": 1
+        },
+        "by_source": {
+          "website_form": 2
+        }
+      },
+      "bookings": {
+        "total": 1,
+        "confirmed": 0,
+        "completed": 0,
+        "cancelled": 0,
+        "pending": 0,
+        "confirmation_rate_percentage": 0.0,
+        "by_consultation_mode": {
+          "in_person": 1
+        },
+        "by_scheduling_mode": {
+          "slot": 1
+        }
+      },
+      "conversion_funnel": {
+        "stages": [
+          {
+            "stage": 1,
+            "name": "Website Visits",
+            "count": 1,
+            "drop_off_percentage": 0.0
+          },
+          {
+            "stage": 2,
+            "name": "High-Intent Actions (Calls & WhatsApp)",
+            "count": 1,
+            "conversion_from_visits_percentage": 100.0
+          },
+          {
+            "stage": 3,
+            "name": "Enquiries & Bookings Submitted",
+            "count": 3,
+            "conversion_from_visits_percentage": 300.0
+          },
+          {
+            "stage": 4,
+            "name": "Confirmed Appointments & Patients",
+            "count": 1,
+            "conversion_from_leads_percentage": 33.33,
+            "overall_conversion_percentage": 100.0
+          }
+        ],
+        "conversion_rates": {
+          "visit_to_interaction": 100.0,
+          "visit_to_lead": 300.0,
+          "lead_to_confirmed": 33.33,
+          "overall_conversion": 100.0
+        }
+      },
+      "device_breakdown": {
+        "mobile": {
+          "count": 1,
+          "percentage": 100.0
+        },
+        "desktop": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "tablet": {
+          "count": 0,
+          "percentage": 0.0
+        }
+      },
+      "top_pages": [
+        {
+          "path": "/services/acne-treatment",
+          "title": "Page",
+          "visits": 1,
+          "unique_visitors": 1
+        }
+      ],
+      "timeseries": [
+        {
+          "date": "2026-09-30",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-01",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-02",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-03",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-04",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-05",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-06",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-07",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-08",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-09",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-10",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-11",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-12",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-13",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-14",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-15",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-16",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-17",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-18",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-19",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-20",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-21",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-22",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-23",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-24",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-25",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-26",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-27",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-28",
+          "visits": 0,
+          "calls": 0,
+          "whatsapp_clicks": 0,
+          "enquiries": 0,
+          "bookings": 0,
+          "confirmed_bookings": 0
+        },
+        {
+          "date": "2026-10-29",
+          "visits": 1,
+          "calls": 0,
+          "whatsapp_clicks": 1,
+          "enquiries": 2,
+          "bookings": 1,
+          "confirmed_bookings": 0
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 9,
+    "step": "9.2 Patient Acquisition Funnel",
+    "method": "GET",
+    "url": "/api/analytics/funnel/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "period": {
+        "preset": "30d",
+        "start": "2026-09-30T00:00:00+00:00",
+        "end": "2026-10-29T04:53:20.160632+00:00",
+        "days": 30
+      },
+      "conversion_funnel": {
+        "stages": [
+          {
+            "stage": 1,
+            "name": "Website Visits",
+            "count": 1,
+            "drop_off_percentage": 0.0
+          },
+          {
+            "stage": 2,
+            "name": "High-Intent Actions (Calls & WhatsApp)",
+            "count": 1,
+            "conversion_from_visits_percentage": 100.0
+          },
+          {
+            "stage": 3,
+            "name": "Enquiries & Bookings Submitted",
+            "count": 3,
+            "conversion_from_visits_percentage": 300.0
+          },
+          {
+            "stage": 4,
+            "name": "Confirmed Appointments & Patients",
+            "count": 1,
+            "conversion_from_leads_percentage": 33.33,
+            "overall_conversion_percentage": 100.0
+          }
+        ],
+        "conversion_rates": {
+          "visit_to_interaction": 100.0,
+          "visit_to_lead": 300.0,
+          "lead_to_confirmed": 33.33,
+          "overall_conversion": 100.0
+        }
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 9,
+    "step": "9.3 Generate Monthly Growth Report",
+    "method": "POST",
+    "url": "/api/reports/monthly/generate/",
+    "request_body": {
+      "year": 2026,
+      "month": 10
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      200,
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "18fcfd1c-04cc-44ab-96d0-ef57027cec8c",
+      "practice": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "year": 2026,
+      "month": 10,
+      "title": "Monthly Healthcare Performance Summary - October 2026",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-31",
+      "patient_metrics": {
+        "total_consultations": 48,
+        "new_patients_acquired": 1,
+        "walk_in_visits": 16,
+        "online_bookings": 32,
+        "inquiries_received": 24,
+        "converted_leads": 18,
+        "attendance_rate_pct": 0.0
+      },
+      "gbp_metrics": {
+        "total_profile_views": 5828,
+        "maps_views": 3088,
+        "search_views": 2740,
+        "direct_phone_calls": 268,
+        "direction_requests": 401,
+        "website_clicks": 545,
+        "new_reviews_count": 1,
+        "average_google_rating": 5.0,
+        "total_reviews_count": 1
+      },
+      "gsc_metrics": {
+        "total_organic_clicks": 419,
+        "total_impressions": 5450,
+        "average_ctr_pct": 7.69,
+        "average_position": 2.5,
+        "top_search_queries": [
+          {
+            "query": "dentist near me",
+            "clicks": 145,
+            "impressions": 1850,
+            "ctr": 0.0784,
+            "position": 1.8
+          },
+          {
+            "query": "dental clinic in Mumbai",
+            "clicks": 92,
+            "impressions": 1140,
+            "ctr": 0.0807,
+            "position": 2.1
+          },
+          {
+            "query": "root canal treatment cost",
+            "clicks": 68,
+            "impressions": 890,
+            "ctr": 0.0764,
+            "position": 2.5
+          },
+          {
+            "query": "teeth whitening dentist",
+            "clicks": 44,
+            "impressions": 620,
+            "ctr": 0.071,
+            "position": 3.2
+          },
+          {
+            "query": "clear aligners invisalign price",
+            "clicks": 38,
+            "impressions": 510,
+            "ctr": 0.0745,
+            "position": 2.9
+          }
+        ]
+      },
+      "rank_metrics": {
+        "total_tracked_keywords": 1,
+        "keywords_in_three_pack": 1,
+        "keywords_in_top_ten": 1,
+        "average_pack_rank": 1.0,
+        "pack_rank_dominance_pct": 100.0,
+        "target_city": "Mumbai"
+      },
+      "executive_summary": "During October 2026, Arogya Skin Clinic 106038 demonstrated robust patient acquisition, completing 48 consultations with an attendance rate of 0.0%. Local Google presence generated 5,828 total impressions across Google Search and Maps, resulting in 268 direct incoming phone calls and 401 driving direction requests. The clinic maintains dominance in the Google Local 3-Pack with 1 keywords ranking in the top 3 positions.",
+      "recommendations": [
+        "Optimize Google Business Profile posts: Publish 2 weekly clinical health tips highlighting Arogya Skin Clinic 106038's specialized treatments to capture high-intent 'near me' searchers.",
+        "Accelerate Review Collection: Leverage automated WhatsApp post-consultation links to convert satisfied patients into 5-star Google reviews within 2 hours of visit completion.",
+        "Capitalize on Local 3-Pack Dominance: Target ranking gains for high-margin procedures ('clear aligners', 'implants') across a 10km radius in Mumbai.",
+        "Reduce Consultation No-Shows: Continue enforcing automated 24h advance and 2h immediate WhatsApp confirmations with interactive reschedule options."
+      ],
+      "status": "published",
+      "status_display": "Published / Shared with Doctor",
+      "pdf_download_url": "/api/reports/monthly/18fcfd1c-04cc-44ab-96d0-ef57027cec8c/pdf/",
+      "generated_at": "2026-10-29T04:53:20.715610Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 9,
+    "step": "9.4 Download Executive PDF Growth Report",
+    "method": "GET",
+    "url": "/api/reports/monthly/18fcfd1c-04cc-44ab-96d0-ef57027cec8c/pdf/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": "<Binary PDF Stream: 5898 bytes>",
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.1 Active Role & Granular RBAC Permissions",
+    "method": "GET",
+    "url": "/api/security/roles/my-permissions/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "user_id": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+      "email": null,
+      "practice_id": "4df3067d-ac3d-437f-8de9-0e594eb1eeb0",
+      "practice_name": "Arogya Skin Clinic 106038",
+      "role": "owner",
+      "role_display": "Practice Owner",
+      "capabilities": {
+        "can_manage_billing": true,
+        "can_manage_backups": true,
+        "can_view_audit_logs": true,
+        "can_manage_roles": true,
+        "can_approve_clinical_content": true,
+        "can_record_consent": true,
+        "can_view_leads_and_bookings": true
+      }
+    },
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.2 Immutable Security Audit Trail",
+    "method": "GET",
+    "url": "/api/security/audit-logs/",
+    "request_body": null,
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "total_count": 1,
+      "results": [
+        {
+          "id": "ec78db98-ecc4-4fa4-b850-4b98ef4449ae",
+          "actor": "b4d3f91a-54e2-4736-92d3-fa5eaaed4e36",
+          "actor_email": "+919856925418",
+          "actor_role": "owner",
+          "category": "consent",
+          "category_display": "Patient Consent Management",
+          "action": "whatsapp_config_updated",
+          "severity": "info",
+          "severity_display": "Informational",
+          "target_model": "WhatsAppConfig",
+          "target_id": "ce7a739f-9dfe-49b3-8c2f-e0a21234db6d",
+          "target_repr": "",
+          "description": "Action 'whatsapp_config_updated' on WhatsAppConfig.",
+          "changes": {
+            "phone_number_id": "10098106038",
+            "waba_id": "99881106038",
+            "access_token": "EAAQ3ZCZB_mock_token_12345",
+            "display_phone_number": "+919856925418",
+            "business_name": "Arogya Skin Clinic",
+            "is_enabled": true,
+            "auto_confirmation_enabled": true,
+            "auto_reminders_enabled": true,
+            "post_visit_review_enabled": true
+          },
+          "ip_address": "127.0.0.1",
+          "user_agent": "",
+          "request_path": "/api/whatsapp/config/",
+          "request_method": "PUT",
+          "status_code": null,
+          "created_at": "2026-10-29T04:53:19.814414Z"
+        }
+      ]
+    },
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.3 Patient Consent Intake (DPDP/HIPAA)",
+    "method": "POST",
+    "url": "/api/security/consents/",
+    "request_body": {
+      "patient_identifier": "+919886445915",
+      "patient_name": "Pooja Verma",
+      "consent_type": "whatsapp_notifications",
+      "consent_text": "Patient agreed to receive WhatsApp appointment reminders and lab reports."
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "08974bde-36eb-4ae2-a9df-4c1e4b61bd27",
+      "patient_identifier": "+919886445915",
+      "patient_name": "Pooja Verma",
+      "consent_type": "whatsapp_notifications",
+      "consent_type_display": "WhatsApp Reminders & Care Updates",
+      "status": "granted",
+      "status_display": "Granted / Active",
+      "consent_text": "Patient agreed to receive WhatsApp appointment reminders and lab reports.",
+      "version": "1.0",
+      "audit_hash": "77ca8aa1ffc3ffe6a1de3cd95a9ece75d8abadcbf2cec9cd423463e0f63b4290",
+      "ip_address": "127.0.0.1",
+      "user_agent": "",
+      "device_fingerprint": "",
+      "source_url": "",
+      "granted_at": "2026-10-29T04:53:20.836249Z",
+      "expires_at": null,
+      "withdrawn_at": null,
+      "withdrawn_reason": "",
+      "metadata": {},
+      "created_at": "2026-10-29T04:53:20.836866Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.4 Withdraw Patient Consent",
+    "method": "POST",
+    "url": "/api/security/consents/withdraw/",
+    "request_body": {
+      "patient_identifier": "+919886445915",
+      "consent_type": "whatsapp_notifications",
+      "reason": "Patient requested stop on marketing messages"
+    },
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "success": true,
+      "revoked_count": 1,
+      "message": "Successfully revoked 1 consent records for +919886445915."
+    },
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.5 Encrypted Practice Data Backup",
+    "method": "POST",
+    "url": "/api/security/backups/",
+    "request_body": {
+      "backup_name": "Snapshot_106038",
+      "backup_type": "manual"
+    },
+    "status_code": 201,
+    "expected_statuses": [
+      201
+    ],
+    "passed": true,
+    "response": {
+      "id": "635f5841-063b-41b4-88ad-b2aa7bd0c415",
+      "backup_name": "Snapshot_106038",
+      "backup_type": "manual",
+      "backup_type_display": "Manual Practice Snapshot",
+      "status": "completed",
+      "status_display": "Completed & Integrity Verified",
+      "file_path": "backups\\4df3067d-ac3d-437f-8de9-0e594eb1eeb0\\Snapshot_106038.json",
+      "file_size_bytes": 17556,
+      "records_count": 13,
+      "checksum_sha256": "04b102ba3c446cd48fbc485ac66f9674986be1cff4f9ce60a8d6cead948be42b",
+      "manifest": {
+        "practice": 1,
+        "locations_count": 0,
+        "services_count": 2,
+        "doctors_count": 1,
+        "website_pages_count": 5,
+        "blog_articles_count": 0,
+        "leads_count": 2,
+        "bookings_count": 1,
+        "consents_count": 1
+      },
+      "expires_at": "2027-01-27T04:53:20.925586Z",
+      "error_message": "",
+      "created_at": "2026-10-29T04:53:20.927349Z"
+    },
+    "notes": ""
+  },
+  {
+    "phase": 10,
+    "step": "10.6 Verify Cryptographic Backup Integrity",
+    "method": "POST",
+    "url": "/api/security/backups/635f5841-063b-41b4-88ad-b2aa7bd0c415/verify/",
+    "request_body": {},
+    "status_code": 200,
+    "expected_statuses": [
+      200
+    ],
+    "passed": true,
+    "response": {
+      "is_valid": true,
+      "checksum_verified": true,
+      "expected_checksum": "04b102ba3c446cd48fbc485ac66f9674986be1cff4f9ce60a8d6cead948be42b",
+      "computed_checksum": "04b102ba3c446cd48fbc485ac66f9674986be1cff4f9ce60a8d6cead948be42b",
+      "manifest": {
+        "practice": 1,
+        "locations_count": 0,
+        "services_count": 2,
+        "doctors_count": 1,
+        "website_pages_count": 5,
+        "blog_articles_count": 0,
+        "leads_count": 2,
+        "bookings_count": 1,
+        "consents_count": 1
+      },
+      "total_records": 13
+    },
+    "notes": ""
+  }
+]
